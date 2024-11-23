@@ -8,7 +8,6 @@ import remarkMath from 'remark-math';
 
 const config: Config = {
   title: 'Charles',
-  tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -84,10 +83,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: "Charles's Site",
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/cat-1.jpg',
       },
       items: [
         {
