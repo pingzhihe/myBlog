@@ -67,14 +67,25 @@
   background: var(--ifm-color-primary-darkest);
 }
 
-/* Navbar with Glassmorphism Effect */
+/* Navbar Basic Styling */
 .navbar {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--ifm-background-color);
 }
 
 [data-theme='dark'] .navbar {
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: var(--ifm-background-color);
+}
+
+/* Desktop Glassmorphism Effect */
+@media (min-width: 997px) {
+  .navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  [data-theme='dark'] .navbar {
+    background-color: rgba(15, 23, 42, 0.8);
+  }
 }
 
 /* Enhanced Code Block Styling */
