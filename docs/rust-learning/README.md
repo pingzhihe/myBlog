@@ -1,4 +1,4 @@
-# This is my Rust Notes
+# Rust Notes
 
 [1.Num-type](./Num-type.md)
 

@@ -1,4 +1,4 @@
-# C++ learning note
+# C++ Notes
 
 ### [Learning RoadMap for C++](https://roadmap.sh/cpp)
 ### Online Material/ Courses
