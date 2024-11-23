@@ -1,3 +1,10 @@
+---
+slug: basic
+title: 1. Basics of C++
+sidebar_position: 1
+authors: zhihe
+tags: [cpp]
+---
 # Basics of C++
 
 

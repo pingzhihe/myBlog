@@ -1,4 +1,11 @@
-# References and Pointers 2
+---
+slug: pointers-2
+title: 4. References and Pointers 
+sidebar_position: 4
+authors: zhihe
+tags: [cpp]
+---
+# References and Pointers 
 
 pointers are objects that hold the address of another object. This address can be deferenced using the dereference operator (*) to get the object at that address.
 ```cpp

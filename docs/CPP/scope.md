@@ -1,3 +1,10 @@
+---
+slug: scope
+title: 2. Scope, Duration, and Linkage
+sidebar_position: 2
+authors: zhihe
+tags: [cpp]
+---
 # Scope, Duration, and Linkage
 
 ##  Scope

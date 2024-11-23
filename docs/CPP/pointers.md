@@ -1,3 +1,10 @@
+---
+slug: pointers-1
+title: '3. Compound Types: References and Pointers'
+sidebar_position: 3
+authors: zhihe
+tags: [cpp]
+---
 # Compound Types: References and Pointers
 
 ## 1. Value categories (lvalues and rvalues)
