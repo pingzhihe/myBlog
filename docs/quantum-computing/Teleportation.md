@@ -1,11 +1,20 @@
-# Entanglement of Multi-Qubit Circuits, Teleportation and Superdense Coding (Week 4)
+---
+title: 2. Entanglement, Teleportation and Superdense Coding
+sidebar_position: 2
+authors: zhihe
+tags: [Quantum Computing]
+---
+
+# Entanglement of Multi-Qubit Circuits, Teleportation and Superdense Coding
 
 ## Bell states
 $$
-|\Phi^+ \rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle) \quad
-|\Phi^- \rangle = \frac{1}{\sqrt{2}} (|00 \rangle - |11\rangle) \newline
-|\Psi^+ \rangle = \frac{1}{\sqrt{2}} (|01 \rangle + | 10\rangle) \quad
-|\Psi^- \rangle = \frac{1}{\sqrt{2}} (01 \rangle - |10\rangle)
+\begin{align}
+|\Phi^+ \rangle &= \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle) \quad \\
+|\Phi^- \rangle &= \frac{1}{\sqrt{2}} (|00 \rangle - |11\rangle) \newline
+|\Psi^+ \rangle &= \frac{1}{\sqrt{2}} (|01 \rangle + | 10\rangle) \quad \\
+|\Psi^- \rangle &= \frac{1}{\sqrt{2}} (01 \rangle - |10\rangle)
+\end{align}
 $$
 
 ## Quantum teleportation 

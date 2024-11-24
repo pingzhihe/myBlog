@@ -1,4 +1,11 @@
-# QAOA (week 5 to week6)
+---
+title: 4. QAOA
+sidebar_position: 4
+authors: zhihe
+tags: [Quantum Computing]
+---
+
+# QAOA
 
 ## The Max-Cut Problem
 - **Goal**: To partition the vertices of a graph into two sets such that the number of edges between the two sets is maximized.

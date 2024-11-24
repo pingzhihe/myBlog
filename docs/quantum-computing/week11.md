@@ -1,3 +1,10 @@
+---
+title: 7. Quantum Algorithms
+sidebar_position: 7
+authors: zhihe
+tags: [Quantum Computing]
+---
+
 # Quantum Algorithms
 
 ## 1.Deutsch's Algorithm

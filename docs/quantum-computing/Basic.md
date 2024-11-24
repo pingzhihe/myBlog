@@ -1,3 +1,10 @@
+---
+title: 1. Basic computing and quantum computing Theory
+sidebar_position: 1
+authors: zhihe
+tags: [Quantum Computing]
+---
+
 # Basic computing and quantum computing Theory
 
 ## Basic Math

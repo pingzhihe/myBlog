@@ -1,3 +1,10 @@
+---
+title: 3. Quantum Key Distribution and QFT
+sidebar_position: 3
+authors: zhihe
+tags: [Quantum Computing]
+---
+
 # QKD and QFT
 
 ## Quamtum Key Distribution: BB84

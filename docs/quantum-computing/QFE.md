@@ -1,9 +1,20 @@
+---
+title: 5. QFE and Shor's Algorithm
+sidebar_position: 5
+authors: zhihe
+tags: [Quantum Computing]
+---
+
 # QFE and Shor's Algorithm
 
 ## Quantum Phase Estimation
 There are some special vectors, called *eigenvectors*, where applying the $X$ gate results in the exact same vector, multiplied by a by a number called an *eigenvector*. For example, $\ket{+}$ is an eigenvector of the $X$ gate.
 $$
-X\ket{+} = \begin{pmatrix} 0 & 1 \\1 &0 \end{pmatrix}  \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} = \ket{+}
+\begin{align} 
+X\ket{+} &= \begin{pmatrix} 0 & 1 \\1 &0 \end{pmatrix}  \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\
+&= \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\
+&= \ket{+}
+\end{align}
 $$
 
 The goal of phase estiamtion is:
@@ -76,5 +87,4 @@ $$
 After measurement of the bottom qubits, 7 is found
 $$
 \frac{|3, 7\rangle + |7, 7\rangle + |11, 7\rangle + |15, 7\rangle + \dots + |251, 7\rangle + |255, 7\rangle}{\left[ \frac{256}{4} \right]}
-\
 $$

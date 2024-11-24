@@ -1,3 +1,10 @@
+---
+title: 6. Shor's Algorithm
+sidebar_position: 6
+authors: zhihe
+tags: [Quantum Computing]
+---
+
 ## QFT
 在经典计算中，傅里叶变换用于将信号从**时域**转换到**频域**\
 **量子傅里叶变换的数学定义**
