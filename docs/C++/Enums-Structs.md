@@ -201,4 +201,194 @@ int main()
 }
 ```
 
+More like normal variables, data members are not initialized by default. Consider the following example:
+```cpp
+#include <iostream>
 
+struct Employee
+{
+    int id; // note: no initializer here
+    int age;
+    double wage;
+};
+
+int main()
+{
+    Employee joe; // note: no initializer here either
+    std::cout << joe.id << '\n';
+
+    return 0;
+}
+```
+We will get a undefined behavior as the value of `joe.id` is not initialized.
+
+
+### aggregate data type
+an **aggregate data type** is any type that can contain multiple data members. Some types. Some types of aggregates allow members to have different types (e.g. structs), while others require that all members must be of a single type (e.g. arrays).
+
+### Aggregate initialization of a struct
+A struct have multiple members, When we define an object with a struct type, we need some way to initialize multiple members at initialization time.
+
+There are 2 primary forms of aggregate initialization:
+**copy-list initialization** and **list initialization**, list initialization is preferred.
+```cpp
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee frank = { 1, 32, 60000.0 }; // copy-list initialization using braced list
+    Employee joe { 2, 28, 45000.0 };     // list initialization using braced list (preferred)
+
+    return 0;
+}
+```
+
+### Overloading `operator<<` to print a struct
+```cpp
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+std::ostream& operator<<(std::ostream& out, const Employee& e)
+{
+    out << e.id << ' ' << e.age << ' ' << e.wage;
+    return out;
+}
+
+int main()
+{
+    Employee joe { 2, 28 }; // joe.wage will be value-initialized to 0.0
+    std::cout << joe << '\n';
+
+    return 0;
+}
+```
+This prints:
+```
+2 28 0
+```
+### Const structs
+Variables of a struct type can be const (or constexpr), and just like all const variables, they must be initialized.
+
+```cpp
+struct Rectangle
+{
+    double length {};
+    double width {};
+};
+
+int main()
+{
+    const Rectangle unit { 1.0, 1.0 };
+    const Rectangle zero { }; // value-initialize all members
+
+    return 0;
+}
+```
+### Designated initializers `C++20`
+```cpp
+struct Foo
+{
+    int a {};
+    int c {};
+};
+
+int main()
+{
+    Foo f { 1, 3 }; // f.a = 1, f.c = 3
+
+    return 0;
+}
+```
+If update this struct definition to add a new member that is not the last member:
+```cpp
+struct Foo
+{
+    int a {};
+    int b {}; // just added
+    int c {};
+};
+
+int main()
+{
+    Foo f { 1, 3 }; // now, f.a = 1, f.b = 3, f.c = 0
+
+    return 0;
+}
+```
+:::warning
+All initialization values have shifted, and worse, the compiler may not detect this as an error!
+:::
+
+To help avoid this, `C++20` adds a new way to initialize struct members called **designated initializers**. Designated initializers allow you to explicitly define which initialization values map to which members. The members can be initialized using list or copy initialization, and must be initialized in the same order in which they are declared in the struct, otherwise a warning or error will result. Members not designated an initializer will be value initialized.
+```cpp
+struct Foo
+{
+    int a{ };
+    int b{ };
+    int c{ };
+};
+
+int main()
+{
+    Foo f1{ .a{ 1 }, .c{ 3 } }; // ok: f1.a = 1, f1.b = 0 (value initialized), f1.c = 3
+    Foo f2{ .a = 1, .c = 3 };   // ok: f2.a = 1, f2.b = 0 (value initialized), f2.c = 3
+    Foo f3{ .b{ 2 }, .a{ 1 } }; // error: initialization order does not match order of declaration in struct
+
+    return 0;
+}
+```
+:::tip
+**Best practice**:
+
+When adding a new member to an aggregate, it’s safest to add it to the bottom of the definition list so the initializers for other members don’t shift.
+:::
+
+### Assignment with an initializer list
+
+As shown in the prior context, we can assign values to members of structs individually:
+```cpp
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee joe { 1, 32, 60000.0 };
+
+    joe.age  = 33;      // Joe had a birthday
+    joe.wage = 66000.0; // and got a raise
+
+    return 0;
+}
+```
+We can also assign values to structs using an initializer list (which does memberwise assignment):
+```cpp
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee joe { 1, 32, 60000.0 };
+    joe = { joe.id, 33, 66000.0 }; // Joe had a birthday and got a raise
+
+    return 0;
+}
+```
