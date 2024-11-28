@@ -3,7 +3,7 @@ slug: enums-structs
 title: 5. Enums and Structs
 sidebar_position: 5
 authors: zhihe
-tags: [cpp]
+tags: [cpp, C++20]
 ---
 # Enums and Structs
 
@@ -390,5 +390,219 @@ int main()
     joe = { joe.id, 33, 66000.0 }; // Joe had a birthday and got a raise
 
     return 0;
+}
+```
+
+### Default member initialization
+When we define a struct,(or class) type, we can provide a default value for each member as a part of the type defination. For members not marked as `static`, this process is sometimes called **non-static member initialization**. The initialzation value is called a **default member initializer**.
+```cpp
+struct Something
+{
+    int x;       // no initialization value (bad)
+    int y {};    // value-initialized by default
+    int z { 2 }; // explicit default value
+};
+
+int main()
+{
+    Something s1; // s1.x is uninitialized, s1.y is 0, and s1.z is 2
+
+    return 0;
+}
+```
+`s1` object doesn’t have an initializer, so the members of `s1` are initialized to their default values. `s1.x` has no default initializer, so it remains uninitialized, `s1.y` is value initialized by default, so its get value `0`, `s1.z` is explicitly initialized to `2`.
+
+### Explicit initialization values take precedence over default values
+```cpp
+struct Something
+{
+    int x;       // no default initialization value (bad)
+    int y {};    // value-initialized by default
+    int z { 2 }; // explicit default value
+};
+
+int main()
+{
+    Something s2 { 5, 6, 7 }; // use explicit initializers for s2.x, s2.y, and s2.z (no default values are used)
+
+    return 0;
+}
+```
+
+:::tip
+**Best practice**
+Provide a default value for all members. This ensures that your members will be initialized even if the variable definition doesn’t include an initializer list.
+:::
+
+
+### Passing structs (by reference)
+A big advantage of using structs over individual variables is that we can pass the entire struct to a function that needs to work with the members. 
+```cpp
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+void printEmployee(const Employee& employee) // note pass by reference here
+{
+    std::cout << "ID:   " << employee.id << '\n';
+    std::cout << "Age:  " << employee.age << '\n';
+    std::cout << "Wage: " << employee.wage << '\n';
+}
+
+int main()
+{
+    Employee joe { 14, 32, 24.15 };
+    Employee frank { 15, 28, 18.27 };
+
+    // Print Joe's information
+    printEmployee(joe);
+
+    std::cout << '\n';
+
+    // Print Frank's information
+    printEmployee(frank);
+
+    return 0;
+}
+```
+The above program outputs:
+```
+ID:   14
+Age:  32
+Wage: 24.15
+
+ID:   15
+Age:  28
+Wage: 18.27
+```
+### Passing temporary structs
+In cases where we only use a variable once, having to give the variable a name and separate the creation and use of that variable can increase complexity. In such cases, it may be preferable to use a temporary object instead. A temporary object is not a variable, so it does not have an identifier.
+```cpp
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+void printEmployee(const Employee& employee) // note pass by reference here
+{
+    std::cout << "ID:   " << employee.id << '\n';
+    std::cout << "Age:  " << employee.age << '\n';
+    std::cout << "Wage: " << employee.wage << '\n';
+}
+
+int main()
+{
+    // Print Joe's information
+    printEmployee(Employee { 14, 32, 24.15 }); // construct a temporary Employee to pass to function (type explicitly specified) (preferred)
+
+    std::cout << '\n';
+
+    // Print Frank's information
+    printEmployee({ 15, 28, 18.27 }); // construct a temporary Employee to pass to function (type deduced from parameter)
+
+    return 0;
+}
+```
+### Member selection with pointers and references
+References to an object act just like the object itself, we can also use the member selection operator (.) to select a member from a reference to a struct:
+```cpp
+#include <iostream>
+
+struct Employee
+{
+    int id{};
+    int age{};
+    double wage{};
+};
+
+void printEmployee(const Employee& e)
+{
+    // Use member selection operator (.) to select member from reference to struct
+    std::cout << "Id: " << e.id << '\n';
+    std::cout << "Age: " << e.age << '\n';
+    std::cout << "Wage: " << e.wage << '\n';
+}
+
+int main()
+{
+    Employee joe{ 1, 34, 65000.0 };
+
+    ++joe.age;
+    joe.wage = 68000.0;
+
+    printEmployee(joe);
+
+    return 0;
+}
+```
+C++ offers a **member selection from pointer operator (->)** (also sometimes called the **arrow operator**) that can be used to select members from a pointer to an object:
+```cpp
+#include <iostream>
+
+struct Employee
+{
+    int id{};
+    int age{};
+    double wage{};
+};
+
+int main()
+{
+    Employee joe{ 1, 34, 65000.0 };
+
+    ++joe.age;
+    joe.wage = 68000.0;
+
+    Employee* ptr{ &joe };
+    std::cout << (*ptr).id << '\n'; // Not great but works: First dereference ptr, then use member selection
+    std::cout << ptr->id << '\n'; // Better: use -> to select member from pointer to object
+
+    return 0;
+}
+```
+### Chaining `operator->`
+If the member accessed via `operator->` is a pointer to a class type, `operator->` can be applied again in the same expression to access the member of that class type.
+```cpp
+#include <iostream>
+
+struct Point
+{
+    double x {};
+    double y {};
+};
+
+struct Triangle
+{
+    Point* a {};
+    Point* b {};
+    Point* c {};
+};
+
+int main()
+{
+    Point a {1,2};
+    Point b {3,7};
+    Point c {10,2};
+
+    Triangle tr { &a, &b, &c };
+    Triangle* ptr {&tr};
+
+    // ptr is a pointer to a Triangle, which contains members that are pointers to a Point
+    // To access member y of Point c of the Triangle pointed to by ptr, the following are equivalent:
+
+    // access via operator.
+    std::cout << (*(*ptr).c).y << '\n'; // ugly!
+
+    // access via operator->
+    std::cout << ptr -> c -> y << '\n'; // much nicer
 }
 ```
