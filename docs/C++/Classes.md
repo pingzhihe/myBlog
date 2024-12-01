@@ -108,3 +108,114 @@ Classes should generally make member variables private (or protected), and membe
 Structs should generally avoid using access specifiers (all members will default to public).
 :::
 
+## Access functions
+An access function is a trivial public member function whose job is to retrieve or change the value of a private member variable.
+
+Access functions come in two flavors: **getters** (also sometimes called accessors) and **setters** (also sometimes called mutators).
+
+- Getters are public member functions that return the value of a private member variable.
+- Setters are public member functions that set the value of a private member variable.
+
+Getters are usually made const, so they can be called on both const and non-const objects. Setters should be non-const, so they can modify the data members.
+```cpp
+#include <iostream>
+
+class Date
+{
+private:
+    int m_year { 2020 };
+    int m_month { 10 };
+    int m_day { 14 };
+
+public:
+    void print()
+    {
+        std::cout << m_year << '/' << m_month << '/' << m_day << '\n';
+    }
+
+    int getYear() const { return m_year; }        // getter for year
+    void setYear(int year) { m_year = year; }     // setter for year
+
+    int getMonth() const  { return m_month; }     // getter for month
+    void setMonth(int month) { m_month = month; } // setter for month
+
+    int getDay() const { return m_day; }          // getter for day
+    void setDay(int day) { m_day = day; }         // setter for day
+};
+
+int main()
+{
+    Date d{};
+    d.setYear(2021);
+    std::cout << "The year is: " << d.getYear() << '\n';
+
+    return 0;
+}
+```
+
+## Member functions returning references to data members
+Returning data members by value can be expensive
+### Returning data members by lvalue reference
+```cpp
+#include <iostream>
+#include <string>
+
+class Employee
+{
+	std::string m_name{};
+
+public:
+	void setName(std::string_view name) { m_name = name; }
+	const std::string& getName() const { return m_name; } //  getter returns by const reference
+};
+
+int main()
+{
+	Employee joe{}; // joe exists until end of function
+	joe.setName("Joe");
+
+	std::cout << joe.getName(); // returns joe.m_name by reference
+
+	return 0;
+}
+```
+
+### Rvalue implicit objects and return by reference
+```cpp
+#include <iostream>
+#include <string>
+#include <string_view>
+
+class Employee
+{
+	std::string m_name{};
+
+public:
+	void setName(std::string_view name) { m_name = name; }
+	const std::string& getName() const { return m_name; } //  getter returns by const reference
+};
+
+// createEmployee() returns an Employee by value (which means the returned value is an rvalue)
+Employee createEmployee(std::string_view name)
+{
+	Employee e;
+	e.setName(name);
+	return e;
+}
+
+int main()
+{
+	// Case 1: okay: use returned reference to member of rvalue class object in same expression
+	std::cout << createEmployee("Frank").getName();
+
+	// Case 2: bad: save returned reference to member of rvalue class object for use later
+	const std::string& ref { createEmployee("Garbo").getName() }; // reference becomes dangling when return value of createEmployee() is destroyed
+	std::cout << ref; // undefined behavior
+
+	// Case 3: okay: copy referenced value to local variable for use later
+	std::string val { createEmployee("Hans").getName() }; // makes copy of referenced member
+	std::cout << val; // okay: val is independent of referenced member
+
+	return 0;
+}
+```
