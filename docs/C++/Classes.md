@@ -219,3 +219,106 @@ int main()
 	return 0;
 }
 ```
+
+:::tip
+**Best Practise**
+Prefer using the member initializer list to initialize your members over assigning values in the body of the constructor.
+:::
+
+##  Default constructors and default arguments
+If a class type has a default constructor, both value initialzation and default initialzation will call the default constructor.
+```cpp
+Foo foo{}; // value initialization, calls Foo() default constructor
+Foo foo2;  // default initialization, calls Foo() default constructor
+```
+
+:::tip
+**Best Practise**
+Prefer value initialization over default initialization for all class types.
+:::
+
+### Constructor with default arguments
+As with all functions, the rightmost parameters of constructors can have default arguments.
+```cpp
+#include <iostream>
+
+class Foo
+{
+private:
+    int m_x { };
+    int m_y { };
+
+public:
+    Foo(int x=0, int y=0) // has default arguments
+        : m_x { x }
+        , m_y { y }
+    {
+        std::cout << "Foo(" << m_x << ", " << m_y << ") constructed\n";
+    }
+};
+
+int main()
+{
+    Foo foo1{};     // calls Foo(int, int) constructor using default arguments
+    Foo foo2{6, 7}; // calls Foo(int, int) constructor
+
+    return 0;
+}
+```
+This prints:
+```
+Foo(0, 0) constructed
+Foo(6, 7) constructed
+```
+
+##  Introduction to destructors
+Destructor is a special member function that is called when an object is destroyed.
+
+### Destructor naming
+Like constructors, destructors have specific naming rules:
+1. The destructor must have the same name as the class, preceded by a tilde (~).
+2. The destructor can not take arguments.
+3. The destructor has no return type.
+
+A class can only have a single destructor.
+```cpp
+#include <iostream>
+
+class Simple
+{
+private:
+    int m_id {};
+
+public:
+    Simple(int id)
+        : m_id { id }
+    {
+        std::cout << "Constructing Simple " << m_id << '\n';
+    }
+
+    ~Simple() // here's our destructor
+    {
+        std::cout << "Destructing Simple " << m_id << '\n';
+    }
+
+    int getID() const { return m_id; }
+};
+
+int main()
+{
+    // Allocate a Simple
+    Simple simple1{ 1 };
+    {
+        Simple simple2{ 2 };
+    } // simple2 dies here
+
+    return 0;
+} // simple1 dies here
+```
+This program produces the following result:
+```
+Constructing Simple 1
+Constructing Simple 2
+Destructing Simple 2
+Destructing Simple 1
+```
