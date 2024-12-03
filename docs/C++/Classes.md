@@ -108,7 +108,7 @@ Classes should generally make member variables private (or protected), and membe
 Structs should generally avoid using access specifiers (all members will default to public).
 :::
 
-## Access functions
+## 3. Access functions
 An access function is a trivial public member function whose job is to retrieve or change the value of a private member variable.
 
 Access functions come in two flavors: **getters** (also sometimes called accessors) and **setters** (also sometimes called mutators).
@@ -153,7 +153,7 @@ int main()
 }
 ```
 
-## Member functions returning references to data members
+## 4. Member functions returning references to data members
 Returning data members by value can be expensive
 ### Returning data members by lvalue reference
 ```cpp
@@ -225,7 +225,7 @@ int main()
 Prefer using the member initializer list to initialize your members over assigning values in the body of the constructor.
 :::
 
-##  Default constructors and default arguments
+## 5. Default constructors and default arguments
 If a class type has a default constructor, both value initialzation and default initialzation will call the default constructor.
 ```cpp
 Foo foo{}; // value initialization, calls Foo() default constructor
@@ -271,7 +271,7 @@ Foo(0, 0) constructed
 Foo(6, 7) constructed
 ```
 
-##  Introduction to destructors
+## 6. Introduction to destructors
 Destructor is a special member function that is called when an object is destroyed.
 
 ### Destructor naming
