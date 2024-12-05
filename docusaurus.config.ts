@@ -20,11 +20,17 @@ const config: Config = {
   trailingSlash: false,
 
 
+  
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+
+  // The Faster plugin 
+  future: {
+    experimental_faster: true,
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
