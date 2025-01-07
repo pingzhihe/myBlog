@@ -21,3 +21,5 @@ tags: [cpp]
 | 方法 | 调用语法 | 返回类型 | 功能 | 示例代码 |
 | --- | --- | --- | --- | --- |
 | stoi | std::stoi(str) | int | 将字符串转换为整数 | int x = std::stoi("42"); |
+| find       | str.find(sub, pos = 0) | std::size_t    | 查找子字符串首次出现的位置           | size_t pos = str.find("abc"); |
+| substr     | str.substr(pos, len)   | std::string    | 提取从指定位置开始的子字符串         | string sub = str.substr(0, 5); |
