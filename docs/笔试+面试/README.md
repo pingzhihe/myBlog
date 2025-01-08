@@ -1,6 +1,7 @@
 ---
 title: 笔试+面试
 slug: interview
+sidebar_position: 1
 ---
 ## 网上资源汇总
 [labuladong 的算法笔记](https://labuladong.online/algo/)
