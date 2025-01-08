@@ -1,9 +1,11 @@
 ---
-title: 0-interview
+title: 面试笔记
+slug: interview-note
+sidebar_position: 2
 ---
 
 
-# 面试面经
+# 面试笔记
 
 ## 1. 计算机网络
 **http tcp 和 ip都在第几层？**
