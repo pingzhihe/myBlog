@@ -6,7 +6,7 @@ import remarkMath from 'remark-math';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-const config: Config = {
+const config = {
   title: 'Charles',
   favicon: 'img/favicon.ico',
 
@@ -17,7 +17,10 @@ const config: Config = {
   baseUrl: '/myBlog/',
   organizationName: 'pingzhihe',
   projectName: 'Charles',
-  trailingSlash: false,
+  trailingSlash: false, 
+  future: {
+    experimental_faster: true,
+  },
 
 
   
