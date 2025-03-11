@@ -40,5 +40,20 @@
     - Advantages include being data-driven, working acorss different languages, and handling out-of-vocabulary words by breaking them into smaller units.
 
 
-<img src={require('./NLP-1-1.png').default} alt="alt text" width="500" />
+<img src={require('./NLP-1-1.png').default} alt="NLP preprocessing diagram" width="500" />
+
+
+## Morphologicval Processing
+- Inflectional Morphology
+    - Deals with grammatical variants (e.g., plural forms, verb tenses, comparative adjectives)
+- Lemmatisation:
+    - Reduces words to their lemma(e.g., "speaking" -> "speak"), often requiring a lexicon to handle irregular forms.
+
+- Derivational Morphology:
+    - Creates new words that may change the lexical category (e.g., "write" to "writer").
+
+- Stemming:
+    - Removes suffixes to reduce words to a stem, which might not always be a vaild word. (e.g., "automation" to "automat").
+    - Commonly used in information retrieval, though it may be less interpretable than lemmatisation.
+
 
