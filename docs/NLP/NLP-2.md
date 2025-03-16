@@ -61,3 +61,90 @@ Smoothing assigns probability to unseen n-grams to avoid zero probabilities. Com
 - **Kneser-Ney Smoothing**
 
 # Text classification
+
+## 1.Fundamentals of Classification
+Classification involves predicting a class label $c$ from a fixed set of classes $C = \{c_1, c_2, \ldots, c_k\}$ for a given input document $d$,
+which is often represented as a vector of features.
+It differs from **regression** (which predicts continuous outputs) and **ranking** (which predicts ordinal outputs).
+
+## 2. Text Classification Tasks
+
+Common text calssification tasks include:
+- **Topic Classification** : Categorizing text by topic (e.g.,"acquisitions", "earnings").
+
+-  **Sentiment Analysis**: Dtermine sentiment ploarity (e.g., positive, negative, neutral).
+
+- **Native-Lenaguage Identification** :Identifying the author's native language.
+
+- **Natural-Language Inference**: Determining relationships between sentences (e.g., entailment, contradiction, neutral).
+
+- **Automatic Fact-Checking** and **Paraphrase Detecting** : Other specialized tasks
+    Note: input may vary in length, from long documents to short sentences or tweets.
+
+
+## 3. Build a Text Classifier
+steps to build a text Classifier
+1. Identify a task of interest
+2. Collect an appropriate corpus
+3. Carry out annotation (label the data)
+4. Select features (e.g., n-grams, word overlap)
+5. Choose a machine learning algorithm
+6. Train the model the tune hyper-parameter using held-out development data.
+7. Repeat ealier steps as needed to improve performance
+8. Train the final model
+9. Evaluate the model on held-out test data
+
+## 4. (Algorithms for Classification)
+
+### 4.1 Navie Bayes
+Uses Baye's law to find the class with the highest posterior probability.
+
+$$
+P(c_n| f_1, \dots f_m) \propto P(c_n) \prod_{i=1}^{m} P(f_i|c_n)
+
+$$
+
+- Assumes features are independent.
+- **Pros**: Fast to train and classify, robust (low variance), good for low-datas situations
+- **Cons**: Independence assumption rarely holds, lower accuracy in many cases, requires smoothing for unseen features.
+
+### 4.2 Logistic regression
+A linear model using *softmax* to produce probabilities
+
+$$
+P(c_n | f_1, \dots , f_m) = \frac{1}{Z} \text{exp} (\sum_{i = 0}^{m} w_i f_i)
+$$
+
+- **Pros**: Handles correlated features well, better performance than Naive Bayes in many cases.
+
+- **Cons**: Slow to train, requires frature scaling, needs regualrzation to prevent overfitting, data hungry.
+
+
+### 4.3 Support Vector Machines, SVM
+Finds the hyperplane that separates classes with the maximum margin.
+**Pros**: Fast, accurate, works well with large feature sets, suppors non-linearity via kernel trick.
+
+**Cons**: Multiclass classification is complex
+
+### 4.4 KNN
+
+### 4.5 Decision Tree
+
+### 4.6 Random Forest
+
+
+### 4.7 Nural Networks
+Layers of interconnected nodes (input, hidden, output) with activation functions.
+
+**Pros**: Extremely powerful, minimal feature engineering, dominant in NLP.
+
+**Cons**: Complex, slow to train, many hyper-parameters, prone to overfitting.
+
+
+## 5. Hyper-parameter Tuning
+- Use a development set or $k$-fold cross-vaildation to tune hyper-parameters (e.g., tree depth, regualarization strength).
+
+- Regualrization prevents overfitting by penalizing model complexity.
+
+## 6 A final word
+Many algorithms are available, but annotation quality, dataset size, and feature selection often matter more than the choice of algorithm for good performance.
