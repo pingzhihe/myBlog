@@ -60,6 +60,31 @@ Smoothing assigns probability to unseen n-grams to avoid zero probabilities. Com
 - **Absolute Discounting**
 - **Kneser-Ney Smoothing**
 
+### 6.1 **Laplacian**
+(Add-one) Smoothing: Adds 1 to all counts, e.g.,
+
+$$
+P_{add1} (w_i| w_{i-1}) = \frac{C(w_{i-1},w_i)+1} {C(w_{i-1}) + \vert V \vert} \text{(Where |V| is vocabulary size)}
+$$
+
+
+### 6.2 **Add k Smoothing**:
+Adds a fraction $k$,($k$ < 1) e.g., 
+
+$$ 
+P_{\text{addk}} (w_i| w_{i-1}) = \frac{C(w_{i-1},w_i) + k}{C(w_{i-1} + k \vert V \vert)} 
+
+$$
+
+
+### 6.3 Absolute Discounting
+Substracts a fixed amount from observed counts and redistributes to unseen n-grams.
+
+### 6.4 Kneser-Ney Smoothing
+Using continuation probabilities based on gthe versatility of lower-order n-grams.
+
+
+
 # Text classification
 
 ## 1.Fundamentals of Classification
