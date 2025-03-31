@@ -65,11 +65,87 @@ $$
 (s_1, s_2, s_3) \in \{\text{JJ}, \text{NNS}, \text{VBP}\}^3.
 $$
 
-#### 
+####  Initialization ($t=1$, word “silver”)
 
 $$
-\delta_1(\text{JJ})
-= \pi(\text{JJ}) \times p(\text{silver}|\text{JJ})
-= 0.3 \times 0.8 
-= 0.24.
+\begin{align}
+\delta_1(\text{JJ}) &= \pi(\text{JJ}) \times p(\text{silver}|\text{JJ}) = 0.3 \times 0.8 = 0.24,\\[1ex]
+\delta_1(\text{NNS}) &= \pi(\text{NNS}) \times p(\text{silver}|\text{NNS}) = 0.4 \times 0.3 = 0.12,\\[1ex]
+\delta_1(\text{VBP}) &= \pi(\text{VBP}) \times p(\text{silver}|\text{VBP}) = 0.3 \times 0.1 = 0.03.
+\end{align}
 $$
+
+#### Step 2: Recursion ($t=2$, word “wheels”)
+$$
+\delta_2(s) = \max_{s'\in\{\text{JJ, NNS, VBP}\}} \left[\delta_1(s') \times p(s' \to s)\right] \times p(\text{wheels}|s).
+$$
+
+**1. $\delta_2(JJ)$**
+$$
+\begin{align}
+&\delta_1(JJ) \times p(JJ \rightarrow JJ) \times p(\text{wheels}|\text{JJ}) = 0.24 \times 0.4 \times 0.1 = 0.0096 \\[1ex]
+&\delta_1(NNS) \times p(NNS \rightarrow JJ) \times p(\text{wheels}| JJ) = 0.12 \times 0.1 \times 0.1 = 0.0012 \\[1ex]
+&\delta_1(VBP) \times p(VBP \rightarrow JJ) \times p(\text{wheels} | JJ) = 0.03 \times 0.4 \times 0.1 = 0.0012 \\[1ex]
+
+\end{align}
+$$
+
+**Choose the max value 0.0096, from $JJ \rightarrow JJ$**
+
+$\delta_2(JJ) = 0.0096$
+
+**2. $\delta_2(NNS)$**
+$$
+\begin{align}
+&0.24 \times 0.5 \times 0.4 = 0.048 \\
+&0.12 \times 0.4 \times 0.4 = 0.0192 \\
+&0.03 \times 0.1 \times0.4 = 0.006 \\
+\end{align}
+$$
+
+**Choose the max value 0.048 , from $JJ \rightarrow NNS$**
+
+$\delta_2(NNS) = 0.048$
+
+**3. $\delta_2(VBP)$**
+
+$$
+\begin{align}
+&0.024 \times 0.1 \times 0.3 = 0.0072 \\
+&0.12 \times  0.5 \times 0.3 = 0.018 \\
+&0.03 \times 0.1  \times 0.3 = 0.0009 \\
+
+\end{align}
+$$
+**Choose max Value 0.072, from $NNS \rightarrow VBP$**
+
+#### Step 3: Recursion ($t=3$, word “sliver”)
+Same as previous one
+$$
+\delta_3(s) = \max_{s'\in\{\text{JJ, NNS, VBP}\}} \left[\delta_2(s') \times p(s' \to s)\right] \times p(\text{turn}|s).
+$$
+
+$$
+\begin{align}
+&\delta_3(JJ) = 0.00072 \\
+&\delta_3(NNS) = 0.00576 \\
+&\delta_3(VBP) = 0.0144 \\
+\end{align}
+$$
+
+#### Step 4 Termination and Backtracking
+At $t=3$, we compare:
+$$
+\delta_3​(JJ)=0.00072,\quad \delta_3​(NNS)=0.00576,\quad \delta_3​(VBP)=0.0144
+$$
+
+
+The highest probability is **0.0144** for state **VBP**. Backtracking the recorded predecessor states:
+- At $t=3$, the best state is VBP.
+- At $t=2$, the best transition leading to VBP came from NNS.
+- At $t=1$, the best transition leading to NNS came from JJ.
+
+which corresponds to the following tagging:
+- **silver → JJ**
+- **wheels → NNS**
+- **turn → VBP**
