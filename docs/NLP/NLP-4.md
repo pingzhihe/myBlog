@@ -77,11 +77,19 @@ $$
 - Difficulty capturing **long-range dependencies** due to **vanishing gradients**
 - Performance degrades when trying to model long contexts.
 
+
+## 3. Long Short-Term Memory (LSTM)
+### 3.1 Motivation
+- Designed to overcome vanishing gradient problems in RNNs.
+
+### 3.2 Components
+- **Memory cell**: stores long-term information
+- **Gates**: control the flow of information:
 $$
 \begin{align*}
 f_t &= \sigma(W_f [h_{t-1}, x_t] + b_f) \quad &\text{(Forget Gate)} \\
 i_t &= \sigma(W_i [h_{t-1}, x_t] + b_i) \quad &\text{(Input Gate)} \\
-\tilde{C}_t &= \tanh(W_C [h_{t-1}, x_t] + b_C) \quad &\text{(Candidate Cell State)} \\
+\tilde{C}_t &= \tanh(W_C [h_{t-1}, x_t] + b_C) \quad &\text{(Distilled information)} \\
 C_t &= f_t \ast C_{t-1} + i_t \ast \tilde{C}_t \quad &\text{(Updated Cell State)} \\
 o_t &= \sigma(W_o [h_{t-1}, x_t] + b_o) \quad &\text{(Output Gate)} \\
 h_t &= o_t \ast \tanh(C_t) \quad &\text{(Hidden State Output)}
