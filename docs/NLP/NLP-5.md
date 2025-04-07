@@ -64,5 +64,34 @@ Prevents overly large inner product values, ensuringt gradient stability.
 ## 4. Mutl-Head Attention
 ### 4.1 Why Muti-Head?
 Words in a sentence can relate to each other across multiple dimensions (syntax, semantics, context). A **Single attention head** may struggle to attend to all these facets simultaneously. Hence, **Multi-Head Attention** is introduced. Multiple heads perform separate projections and attentions in parallel, and their outputs are concatenated and linearly transfromed, capturing richer relationships.
+<img src={require('@site/static/img/NLP/multi-attention.png').default} alt="RNN-1" />
 
 ### 4.2 Multi-Head Formula
+Assume we have $h$ attention heads, each with its own projection matrices $W_i^Q$, $W_i^K$, $W_i^V$. The $i$-th head is computed as:
+$$
+\text{head}_i = \text{Attention}(QW_I^Q, KW_I^k, VW_i^V)  
+$$
+
+We then conatenate all $\text{head}_i$ amd multiply by an output projection matrix $W^O$:
+$$
+\text{MultiHead}(Q,K,V) = \text{Concat} (\text{head}_1, \dots, \text{head}_h) W^O
+$$
+
+## 5. Transformwer block Structure
+<img src={require('@site/static/img/NLP/Transformer-block.png').default} alt="Transformer Block" />
+
+
+## 6. Word Embedding
+### 6.1 Why Position Emcoding
+Self-Attention in a Transformer does not inherently distinguish the positions of tokens in a sequence. Without additional signals, the model cannot tell which token appears first or second. Hence, **Postion information** must be explictly injected
+
+
+# Word Embedding
+
+## Distribution Hypothesis
+
+## Count-Based Word vectors
+
+### 2.1 Documents as Context
+
+**2.1.2** TF-IDF    
