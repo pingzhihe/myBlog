@@ -58,3 +58,46 @@ title: "Week6"
 - BERT is pretrained in Wikipedia + BookCorpus
 - Training taks multiple GPUs over several days
 
+### Adapt To Downstream tasks
+- Given pretrained BERTm how do we use it for downstream tasks?
+- Same as GPT add a classification layer
+    - But in this case, we use a special first token ([CLS])
+
+### Encoder
+- BERT's bidirectional transformer is also called a **transformer encoder**
+- Each output word is conditioned on bidirectional context (bidirectional attention)
+- Better contextual representation
+- Unable to generate text post-training
+    - Doesn't work for generation tasks, e.g., machine translation
+
+### Decoder
+- GPT's unidirectional tgransformer is also called a **transformer decoder**
+- Each output is conditioned on only left context words (unidirectionl attention)
+- Works on both classification and generation tasks
+- But performance on classification is not as good as encoder models
+
+### Encoder-Decoder
+- How can we marry the benefits of encoder (strong classification performance but can't do generation) and decoder
+(poor classification performance but can do generation)?
+- Combine them!
+- Use an encoder to process an input
+- Use an decoder to generate the output
+
+
+## T5
+[Text-to-text Transfer Transformer](https://jmlr.org/papers/volume21/20-074/20-074.pdf)
+- Pretraining objective: span corruption
+
+### Other Alternative Objectives
+- Prefix language model
+    - cows love to $\rightarrow$ eat grass
+- Masked language model
+    - cows `<M> <M>` eat grass $\rightarrow$ cows love to eat grass
+- Shuffling:
+    - grass cows to love eat $\rightarrow$ cows love to eat grass
+
+- Drop tokens:
+    - Cows love grass $\rightarrow$ to eat
+
+
+#  Large Language Model
