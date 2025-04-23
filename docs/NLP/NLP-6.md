@@ -99,5 +99,19 @@ title: "Week6"
 - Drop tokens:
     - Cows love grass $\rightarrow$ to eat
 
+### Pretraining Corpus
+- Filtered C4: filtered web Text
+    - Lots of noise : non-language, non-English and offensive content
+    - Heuristic applied to filter them
+
+- Quality matters (not just quanitity)
+
+### Fine-tuning
+- Cast all tasks as a text-to-text problem, and fine-tune with next word prediction objective
+
+### How good is T5?
+- Comes with a few sizes: small (60M), base(220M), large(770M), 3B and 11B.
+
 
 #  Large Language Model
+A Large Language Model (LLM) is an autogressive neural network based on the Transformer architecture, pretained on massive text corpora

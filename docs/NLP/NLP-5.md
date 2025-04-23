@@ -78,7 +78,7 @@ $$
 $$
 
 ## 5. Transformwer block Structure
-<img src={require('@site/static/img/NLP/Transformer-block.png').default} alt="Transformer Block" />
+<img src={require('@site/static/img/NLP/Transformer-block.png').default} alt="Transformer Block" width="600" />
 
 
 ## 6. Word Embedding
@@ -86,12 +86,129 @@ $$
 Self-Attention in a Transformer does not inherently distinguish the positions of tokens in a sequence. Without additional signals, the model cannot tell which token appears first or second. Hence, **Postion information** must be explictly injected
 
 
-# Word Embedding
+## 1. Word Embedding
 
-## Distribution Hypothesis
+### 1.1 Distribution Hypothesis
+The distribution hypothesis states, "You shell know a word by the company it keeps." Both locak context (word windows) and document-level co-occurance signal a word's meaning (Firth,1957).
 
-## Count-Based Word vectors
+### 1.2 Guessing Meaning from context
+- Learn unknown word from its usage
+<img src={require('@site/static/img/NLP/week5/pic_1.png').default} alt="Learn unknown word from its usage" width="650"/>
+- Another way： look at words that share similar contexts
+<img src={require('@site/static/img/NLP/week5/pic_2.png').default} alt="look at words that share similar contexts" width="500"/>
 
-### 2.1 Documents as Context
+###  1.3 Word vectors
+<img src={require('@site/static/img/NLP/week5/pic_3.png').default} alt="word vecrtor table" width="500"/>
+- Each row can be thought of a **word vector**
+- It describes the distributional properties of a word
+    - i.e., encodes information about its context words
+- Capture all sorts of semantic relationships
 
-**2.1.2** TF-IDF    
+**Word embeddings**
+<img src={require('@site/static/img/NLP/week5/pic_4.png').default} alt="word embeddings" width="500"/>
+
+## 2. Count-Based Word vectors
+- Gneneral two flavours
+    - Use document as context
+    - Use neighbouring words as context
+
+### 2.1 Docuement as Context: The Vector Space Model
+- Core idea: represent word meaning as a vector
+- Consider documents as context
+- One matrix, two viewpoints
+    - Documents represented by their words
+    - Words represented by their documents
+<img src={require('@site/static/img/NLP/week5/pic_5.png').default} alt="Vector space table" width="500"/>
+
+**Manitupulating the VSM**:
+- Weighing the values (beyond frequency)
+- Creating low-dimensional dense vectors
+
+
+### 2.2 Tf-idf
+
+$$
+idf_w = \log{\frac{|D|}{df_w}} 
+$$
+where $D$ is total # of docs and $df_W$ is #docs that has w
+
+- Standard weighting scheme for information retrieval
+- Discounts common words
+
+### 2.3 dimensionality Reduction
+- Term-document martrices are very **sparce**
+- Dimensionality reduction: create shorter, denser vectors
+- More practial (less features)
+- Remove noise (less overfitting)
+
+### 2.4 Singular Value Decomposition
+$$
+A = U \Sigma V^T
+$$
+
+<img src={require('@site/static/img/NLP/week5/svd.png').default} alt="SVD" width="650"/>
+
+### 2.4 Truncating - Latent Semantic Analysis
+- Truncating $U,\Sigma, V$ to k dimensions produces best possible k rank appriximation of original matrix
+- $U_k$ is a new low dimensional representation of words
+- Typical values for k are 100-5000
+ <img src={require('@site/static/img/NLP/week5/lsa.png').default} alt="lsa" width="650"/>
+
+##  3 Words as Context
+- Lists how often words appear with other Words
+    - In some predefined context (e.g., a window of N words)
+- The obvious problem with raw frequency: dominated by common words
+
+### 3.1 Pointwise Mutual information
+- For two events x and y, PMI comoputes the discrepancy between:
+    - Their joint distribution = $P(x,y)$
+    - Their individual distributions (assuming independence) = $P(x)P(y)$
+$$
+PMI(x,y) = \log_2\frac{P(x,y)}{P(x)P(y)}
+$$
+
+PMI primarily serves as a weighted co-occurance matrix, used to measure the strengthj of semantic association between a word w and a contgext word can
+
+ <img src={require('@site/static/img/NLP/week5/pmi_example.png').default} alt="PMI table" width="650"/>
+
+### 3.2 PMI matrix
+- PMI does a better job of capturing semantics
+    - e.g., heaven and hell
+- But very biased towards rare word pairs
+- And doesn't handle zeros well
+
+
+ <img src={require('@site/static/img/NLP/week5/pmi_table.png').default} alt="lsa" width="600"/>
+
+
+### 3.3 PMI tricks
+- Zero all negative values (Positve PMI)
+    - Avoid -inf and unreliable negative values
+- Counter bias towads rare events
+
+$$
+\text{Normalised PMI: }\quad  \left( \frac{\text{PMI(x,y)}}{-\log P(x,y)}\right)
+$$
+
+### 3.4 SVD (A =  $U \Sigma V^T$ )
+
+- Regardless of whatever we use document or word as context, SVD can be applied to create dense vectors
+
+##  4.Neural Methods
+- We've seen word embeddings used in neural neworks (lecture 7 and 8)
+- But these models are designed for other tasks:
+    - Classcification
+    - Languager modeling
+- Word embedding are just *byproduct*
+
+### 4.1 Word2Vec
+Core idea:
+- You shall know a word by the company it keeps
+- Predict a word using context words
+
+**Word2Vec has 2 structures:** 
+- **Skip-gram**: predict surrounding words of target word
+ <img src={require('@site/static/img/NLP/week5/skip-gram.png').default} alt="skip-gram model" width="750"/>
+
+- **CBOW**: predict target word using surrounding words
+
