@@ -4,12 +4,12 @@ title: "Week7"
 # LLM and Prompting
 
 ## 1. Overview of Generative Pretrained Transformers (GPT)
-| Metric         | GPT-1     | GPT-2    | GPT-3       | ChatGPT                                 |
-| -------------- | --------- | -------- | ----------- | --------------------------------------- |
-| Training Data  | BookCrawl | WebText  | CommonCrawl | + GPT-3.5 *Supervised Reinforcement Learning* |
-| Parameters     | 117M      | 1.5B     | 175B        | —                                       |
-| Layers         | 12        | 48       | 96          | —                                       |
-| Dimensions     | 768       | 1,600    | 12,288      | —                                       |
+| Metric        | GPT-1     | GPT-2   | GPT-3       | ChatGPT                                       |
+| ------------- | --------- | ------- | ----------- | --------------------------------------------- |
+| Training Data | BookCrawl | WebText | CommonCrawl | + GPT-3.5 *Supervised Reinforcement Learning* |
+| Parameters    | 117M      | 1.5B    | 175B        | —                                             |
+| Layers        | 12        | 48      | 96          | —                                             |
+| Dimensions    | 768       | 1,600   | 12,288      | —                                             |
 
 ### 1.1 Training Process for *Instruct GPT* -  (RLHF)
 **Step 1**: Supervised Fine-tuning (SFT)
@@ -80,6 +80,6 @@ Cons:
 - Limits to what you can fit in context
 - Complex tasks will probably need gradient steps
 
-
+·
 
 
