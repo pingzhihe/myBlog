@@ -1,0 +1,77 @@
+/* 文件：src/components/Card/styles.module.css */
+.cardContainer {
+    /* background-color: #ffffff; */
+    background-image: linear-gradient(to top right, #f8f9fa, #ffffff);
+    border: 1px solid #e9ecef;
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: var(--ifm-card-shadow);
+    padding: 16px;
+    margin: 8px;
+    flex: 1 1 250px; /* 在 flex 容器中实现响应式伸缩 */
+    display: flex;
+    flex-direction: column;
+    /* transition: transform 0.1s; */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.cardContainer:hover {
+    transform: translateY(-2px) scale(1.02); /* Slightly more lift and subtle scale */
+    /* box-shadow: var(--ifm-card-shadow--medium); */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* More pronounced shadow */
+    border-color: var(--ifm-color-primary); /* Change border color on hover */
+}
+
+.cardHeader {
+    margin-bottom: 8px;
+}
+
+.cardTitle {
+    display: flex; /* Align icon and text */
+    align-items: center; /* Vertically center icon and text */
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ifm-heading-color);
+    transition: color 0.2s ease-in-out; /* Add transition for color change */
+}
+
+.cardTitle:hover {
+    text-decoration: underline;
+    color: var(--ifm-color-primary-dark); /* Slightly darker color on hover for title */
+    /* text-decoration can be on the .cardTitleText if you don't want to underline the icon */
+}
+
+.cardTitleIcon {
+    margin-right: 8px; /* Space between icon and title text */
+    display: flex; /* Helps if the icon itself is an SVG that needs alignment */
+    align-items: center;
+}
+
+.cardBody {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+/* 暗色模式适配 */
+[data-theme='dark'] .cardContainer {
+    background-image: linear-gradient(to top right, #161b22, #1c2128);
+    border: 1px solid var(--ifm-color-emphasis-300);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .cardContainer:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .cardTitle {
+    color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .cardTitle:hover {
+    color: var(--ifm-color-primary-light);
+}
+  
+  

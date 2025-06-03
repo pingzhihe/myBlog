@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     image: require('@site/static/img/mob-1.jpg').default,
     description: (
       <>
-        I like computer science, physics, and anime.
+        I like computer science, physics.
       </>
     ),
   },
@@ -44,7 +44,7 @@ function Feature({title, image, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center" style={{ 
-        height: '180px', 
+        height: '250px', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',

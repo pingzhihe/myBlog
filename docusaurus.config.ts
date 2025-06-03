@@ -110,6 +110,7 @@ const config = {
           label: 'GitHub',
           position: 'right',
         },
+        {to:'bookmarks', label: 'useful websites', position: 'left'},
       ],
     },
     footer: {

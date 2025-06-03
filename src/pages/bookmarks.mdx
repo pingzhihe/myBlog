@@ -1,0 +1,48 @@
+---
+title: 常用网站书签
+description: 我平时常用的一些网站，按主题分类展示
+---
+
+import React from 'react';
+import Card from '@site/src/components/Card';
+import styles from './bookmarks.module.css';
+import { Book, SquareCode, Newspaper } from 'lucide-react';
+
+# 常用网站卡片
+
+以下是我平时常用的一些网站，按主题分组展示，点击名称即可打开相应页面。
+
+<div className={styles.cardsContainer}>
+  <Card title="代码学习" icon={<SquareCode size={18} />}>
+    <ul>
+      
+      <li><a href="https://www.learncpp.com" target="_blank" rel="noopener noreferrer">learncpp.com</a></li>
+      <li><a href="https://go.dev/doc/" target="_blank" rel="noopener noreferrer">go.dev</a></li>
+      <li><a href="https://www.rust-lang.org/learn" target="_blank" rel="noopener noreferrer">rust-lang.org</a></li>
+    </ul>
+  </Card>         
+
+  <Card title="学习资料" icon={<Book size={18} />}>
+    <ul>
+      <li><a href ="https://roadmap.sh/" target="_blank" rel="noopener noreferrer">roadmap.sh</a></li>
+      <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://juejin.cn" target="_blank" rel="noopener noreferrer">掘金</a></li>
+    </ul>
+  </Card>
+
+  <Card title="社交媒体">
+    <ul>
+      <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+      <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    </ul>
+  </Card>
+
+  <Card title="新闻资讯" icon={<Newspaper size={18} />}>
+    <ul>
+      <li><a href="https://news.google.com" target="_blank" rel="noopener noreferrer">Google News</a></li>
+      <li><a href="https://cn.bing.com/news" target="_blank" rel="noopener noreferrer">Bing News</a></li>
+      <li><a href="https://www.ft.com" target="_blank" rel="noopener noreferrer">Financial Times</a></li>
+    </ul>
+  </Card>
+</div>

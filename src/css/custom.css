@@ -26,26 +26,48 @@
   /* Custom Shadows */
   --ifm-navbar-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --ifm-card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  
+  /* 添加设计感增强变量 */
+  --card-border-radius: 12px;
+  --content-spacing: 2rem;
+  --subtle-accent: rgba(59, 130, 246, 0.1);
 }
 
 /* Dark Mode Overrides */
 [data-theme='dark'] {
-  /* Primary Colors: Neon Blue */
-  --ifm-color-primary: #38bdf8;
-  --ifm-color-primary-dark: #0ea5e9;
-  --ifm-color-primary-darker: #0284c7;
-  --ifm-color-primary-darkest: #0369a1;
-  --ifm-color-primary-light: #7dd3fc;
-  --ifm-color-primary-lighter: #bae6fd;
-  --ifm-color-primary-lightest: #e0f2fe;
+  /* Primary Colors: 更协调的蓝紫色系 */
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
   
-  /* Dark Mode Background and Text */
-  --ifm-background-color: #0f172a;
-  --ifm-background-surface-color: #1e293b;
-  --ifm-font-color-base: #f1f5f9;
+  /* Dark Mode Background and Text - 更科学的对比度 */
+  --ifm-background-color: #0c1117;
+  --ifm-background-surface-color: #161b22;
+  --ifm-font-color-base: #e6edf3;
+  
+  /* 次要文字颜色 */
+  --ifm-font-color-secondary: #8b949e;
+  --ifm-font-color-muted: #7d8590;
   
   /* Dark Mode Code Block */
-  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.08);
+  
+  /* 暗色模式设计感增强变量 */
+  --subtle-accent: rgba(96, 165, 250, 0.08);
+  
+  /* 边框颜色 */
+  --ifm-color-emphasis-300: #30363d;
+  --ifm-color-emphasis-200: #21262d;
+  --ifm-color-emphasis-100: #1c2128;
+  
+  /* 成功、警告、错误色彩 */
+  --ifm-color-success: #2ea043;
+  --ifm-color-warning: #fb8500;
+  --ifm-color-danger: #f85149;
 }
 
 /* Custom Scrollbar Styling */
@@ -58,8 +80,8 @@
   background: var(--ifm-background-surface-color);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--ifm-color-primary-darker);
+::-webkit-scrollbar-thumb { 
+  background: var(--ifm-color-primary-lighter);
   border-radius: 4px;
 }
 
@@ -70,38 +92,103 @@
 /* Navbar Basic Styling */
 .navbar {
   background-color: var(--ifm-background-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 [data-theme='dark'] .navbar {
-  background-color: var(--ifm-background-color);
+  background-color: rgba(12, 17, 23, 0.95);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
 }
 
 /* Desktop Glassmorphism Effect */
 @media (min-width: 997px) {
   .navbar {
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
   }
 
   [data-theme='dark'] .navbar {
-    background-color: rgba(15, 23, 42, 0.8);
+    background-color: rgba(15, 23, 42, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   }
 }
 
 /* Enhanced Code Block Styling */
 .prism-code {
-  border-radius: 8px !important;
+  border-radius: var(--card-border-radius) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.237);
 }
 
 /* Card Hover Animation */
 .card {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: var(--card-border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--ifm-card-shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary-light);
 }
+
+[data-theme='dark'] .card {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* 添加渐变按钮效果 */
+.button--primary {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* 添加内容区域间距和背景 */
+/* .container {
+  padding: var(--content-spacing) 0;
+} */
+
+main {
+  position: relative;
+} 
+
+
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 350px;
+  background: 
+    radial-gradient(ellipse 60% 40% at 20% 30%, var(--subtle-accent), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(147, 197, 253, 0.06), transparent 65%),
+    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(99, 102, 241, 0.04), transparent 60%);
+  z-index: -1;
+  border-radius: 0 0 50% 50% / 25px;
+  opacity: 0.7;
+  max-width: 100%;
+}
+
+[data-theme='dark'] main::before {
+  background: 
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(19, 18, 18, 0.06)ransparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(46, 46, 46, 0.04), transparent 65%),
+    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(119, 121, 124, 0.03), transparent 60%);
+  opacity: 0.5;
+} 
 
 /* Optional: Add smooth transitions for theme switching */
 html {
@@ -111,22 +198,108 @@ html {
 /* Optional: Enhanced Link Styling */
 a {
   transition: color 0.2s ease;
+  position: relative;
 }
+
+a:not(.navbar__link):not(.menu__link):not(.card):not(.button):after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: width 0.3s ease;
+} 
+
+a:not(.navbar__link):not(.menu__link):not(.card):not(.button):hover:after {
+  width: 100%;
+} 
 
 /* Optional: Table Styling */
 table {
   border-collapse: separate;
   border-spacing: 0;
-  border-radius: 8px;
+  border-radius: var(--card-border-radius);
   overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background: var(--subtle-accent);
 }
 
 /* Optional: Image Styling */
 img {
-  border-radius: 8px;
+  border-radius: var(--card-border-radius);
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.434);
 }
 
 img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
+}
+
+/* 添加标题样式增强 */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+/* 如果还是有问题，可以在全局添加 */
+/* body {
+  overflow-x: hidden;
+} */
+
+/* 优化暗色模式下的导航栏 */
+[data-theme='dark'] .navbar {
+  background-color: rgba(12, 17, 23, 0.95);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* 优化暗色模式下的卡片 */
+[data-theme='dark'] .card {
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* 优化暗色模式下的代码块 */
+[data-theme='dark'] .prism-code {
+  background-color: #161b22 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 优化暗色模式下的表格 */
+[data-theme='dark'] table {
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] thead {
+  background: rgba(96, 165, 250, 0.1);
+}
+
+/* 优化暗色模式下的按钮 */
+[data-theme='dark'] .button--primary:hover {
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+}
+
+/* 优化暗色模式下的滚动条 */
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary);
 }
