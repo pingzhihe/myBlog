@@ -20,10 +20,10 @@ Maximize $\sum_{(i,j) \in E} w_ij (1 - x_i x_j)$
 ### Hamiltonian
 Using the substitution, $x_i = \frac{1 - Z_i}{2}$, we can formulate the equtaion:
 $$
-\begin{align}
-\hat{H}MaxCut &= \sum_{(i,j) \in E} \frac{I - Z_i Z_j}{2}  \
-&= -\frac{1}{2} \sum_{(i,j) \in E} (Z_i Z_j) + \frac{1}{2} |E| I \
-\end{align}
+\begin{aligned}
+\hat{H}MaxCut &= \sum_{(i,j) \in E} \frac{I - Z_i Z_j}{2}  \\
+&= -\frac{1}{2} \sum_{(i,j) \in E} (Z_i Z_j) + \frac{1}{2} |E| I \\
+\end{aligned}
 $$
 Where $|E|$ is the size of the edge
 
@@ -40,20 +40,20 @@ For the constraint of MVC, we using the penalty function: $P(1-x-y+xy)$
 The unconstrained alternative for MVC is ($P$: Penalty Coefficient, $w_j$: weight to vertex $j$, usually $w_j = 1$):
 
 $$
-\begin{align}
+\begin{aligned}
 \text{Minimize} & \sum_{j \in V}{w_j x_j} + 
 & P\left(\sum_{(i,j)\in E} (1 - x_i - x_j + x_i x_j)\right)
-\end{align}
+\end{aligned}
 $$
 
 ### Hamiltonian
 Substitute $x_i = \frac{1 - Z_i}{2}$, we can get the Hamiltonian for MVC:
 $$
-\begin{align}
+\begin{aligned}
 y &= \sum_{j\in V} \frac{(1-z_j)w_j}{2} + P \sum_{(i,j)\in E} \left[1-\frac{1-z_j}{2}-\frac{1-z_i}{2}+\frac{1-z_j}{2}\frac{1-z_i}{2}\right] \\
 &= \frac{|V|w_j}{2} - \sum_{j\in V}w_j\frac{z_j}{2} + P \sum_{(i,j)\in E} \left[1-\frac{1}{2}+\frac{z_j}{2}-\frac{1}{2}+\frac{z_i}{2}+\frac{1-z_i-z_j+z_iz_j}{4}\right] \\
 &= \frac{|V|w_j}{2} - \sum_{j\in V}w_j\frac{z_j}{2} + P \sum_{(i,j)\in E} \left[\frac{1+z_iz_j+z_i+z_j}{4}\right]
-\end{align}
+\end{aligned}
 $$
 Then we have:
 $$

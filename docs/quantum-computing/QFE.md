@@ -10,11 +10,11 @@ tags: [Quantum Computing]
 ## Quantum Phase Estimation
 There are some special vectors, called *eigenvectors*, where applying the $X$ gate results in the exact same vector, multiplied by a by a number called an *eigenvector*. For example, $\ket{+}$ is an eigenvector of the $X$ gate.
 $$
-\begin{align} 
+\begin{aligned} 
 X\ket{+} &= \begin{pmatrix} 0 & 1 \\1 &0 \end{pmatrix}  \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\
 &= \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \\
 &= \ket{+}
-\end{align}
+\end{aligned}
 $$
 
 The goal of phase estiamtion is:

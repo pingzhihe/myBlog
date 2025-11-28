@@ -100,8 +100,10 @@ The main advantage of off-policy approaches is that they can use samples from so
 
 ### n-step SARSA
 $$
+\begin{aligned}
 G_t^n = r_t+\gamma \cdot r_{t+1} + \gamma^2 \cdot r_{t+2}+\dots +\gamma^n \cdot Q(s',a') \\[6pt]
 Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [G_t^n - Q(s_t, a_t)]
+\end{aligned}
 $$
 
 
@@ -179,8 +181,10 @@ $$
 Given a feature vector $f$ and a weight vector $w$, the Q-value of a state is a linear combinations of features and weights.
 
 $$
+\begin{aligned}
 Q(s,a) = f_1(s,a) \cdot w_1^a + f_2(s,a) \cdot w_2^a + \ldots + f_n(s,a) \cdot w_n^a \\
         = \sum_{i=0}^n f_i(s,a)w_i^a
+\end{aligned}
 $$
 
 **Linear Q-function update**

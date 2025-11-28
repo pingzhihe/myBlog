@@ -9,12 +9,12 @@ tags: [Quantum Computing]
 
 ## Bell states
 $$
-\begin{align}
+\begin{aligned}
 |\Phi^+ \rangle &= \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle) \quad \\
-|\Phi^- \rangle &= \frac{1}{\sqrt{2}} (|00 \rangle - |11\rangle) \newline
+|\Phi^- \rangle &= \frac{1}{\sqrt{2}} (|00 \rangle - |11\rangle) \\
 |\Psi^+ \rangle &= \frac{1}{\sqrt{2}} (|01 \rangle + | 10\rangle) \quad \\
 |\Psi^- \rangle &= \frac{1}{\sqrt{2}} (01 \rangle - |10\rangle)
-\end{align}
+\end{aligned}
 $$
 
 ## Quantum teleportation 
@@ -26,11 +26,11 @@ Alice only have one qubit in the state $|\psi \rangle$, and from the **no-clonin
 **Quantum Solution** \
 If Alice and Bob already share entanglement, they can use it to teleport the quantum state.
 $$
-\begin{align*}
+\begin{aligned}
 |\psi \rangle |\Phi^+ \rangle &= \alpha |0 \rangle |\Phi^+ \rangle + \beta |1\rangle |\Phi^+ \rangle \\[5pt]
 &= \alpha|0\rangle \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle) + \beta|1\rangle \frac{1}{\sqrt{2}}(|00\rangle + |11\rangle) \\[5pt]
 &= \frac{1}{\sqrt{2}}[\alpha(|000\rangle + |011\rangle) + \beta(|100\rangle + |111\rangle)]
-\end{align*}
+\end{aligned}
 $$
 The left two qubits belongs to Alice and the right qubit belongs to Bob.\
 First, Alice applies a **CNOT** gate to her 2 qubits:
@@ -39,20 +39,21 @@ $$
 $$
 Next, she applied a Hardmard gate to her **left** qubit, yielding
 $$
-\begin{align*}
+\begin{aligned}
 & \frac{1}{\sqrt{2}}[\alpha(|+00\rangle + |+11\rangle) + \beta (|-10\rangle+ |-01\rangle)] \\[5pt]
 &= \frac{1}{2}[\alpha(|0\rangle + |1\rangle)(|00\rangle + |11\rangle) + \beta (|0\rangle - |1\rangle)(|10\rangle + |01\rangle)] \\[5pt]
 &= \frac{1}{2}[|00\rangle (\alpha|0\rangle + \beta | 1\rangle) + |01\rangle (\beta |0\rangle + \alpha |1\rangle) 
  |10\rangle(\alpha |0\rangle-\beta |1\rangle) + |11\rangle (-\beta|0\rangle + \alpha |1\rangle)]
-\end{align*}
+\end{aligned}
 $$ 
 Then Alice measures her two qubits. She gets 00, 01, 10, 11, each with probability 1/4. So after measurement, the possible states are
 $$
-|00\rangle (\alpha|0\rangle + \beta | 1\rangle), \newline
-|01\rangle (\beta |0\rangle + \alpha |1\rangle), \newline
-|10\rangle (\alpha |0\rangle-\beta |1\rangle), \newline
-|11\rangle (-\beta|0\rangle + \alpha |1\rangle) \newline
-
+\begin{aligned}
+|00\rangle (\alpha|0\rangle + \beta | 1\rangle), \\
+|01\rangle (\beta |0\rangle + \alpha |1\rangle), \\
+|10\rangle (\alpha |0\rangle-\beta |1\rangle), \\
+|11\rangle (-\beta|0\rangle + \alpha |1\rangle)
+\end{aligned}
 $$
 
 - If Alice's measurement was 00, Bob does nothing because his qubit is now in the state $|\psi\rangle$ that Alice wanted to send him
@@ -95,11 +96,10 @@ Bob can measure the two qubits to distinguish them.
 
 
 $$
+\begin{aligned}
 |\Phi^+\rangle \stackrel{CNOT}{\longrightarrow} \frac{1}{\sqrt{2}}(|00\rangle + |10\rangle) = |+\rangle|0\rangle \stackrel{H\otimes I}{\longrightarrow}= |00\rangle, \\[6pt]
-
 |\Psi^+\rangle \stackrel{CNOT}{\longrightarrow} \frac{1}{\sqrt{2}}(|01\rangle + |11\rangle) = |+\rangle|1\rangle \stackrel{H\otimes I}{\longrightarrow}= |01\rangle, \\[6pt]
-
 |\Phi^-\rangle \stackrel{CNOT}{\longrightarrow} \frac{1}{\sqrt{2}}(|00\rangle - |10\rangle) = |-\rangle|0\rangle \stackrel{H\otimes I}{\longrightarrow}= |10\rangle, \\[6pt]
-
 |\Psi^-\rangle \stackrel{CNOT}{\longrightarrow} \frac{1}{\sqrt{2}}(|01\rangle - |11\rangle) = |-\rangle|1\rangle \stackrel{H\otimes I}{\longrightarrow}= |11\rangle.
+\end{aligned}
 $$

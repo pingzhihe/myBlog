@@ -52,8 +52,10 @@ $$
 
 Subject to constraints:
 $$
+\begin{aligned}
 \xi_i \geq 1 - y_i (w'x_i + b) \text{ for } i = 1, \ldots, n \\[6pt]
 \xi_i \geq 0 \text{ for } i = 1, \ldots, n
+\end{aligned}
 $$
 
 
@@ -82,16 +84,19 @@ $$
 $$
 Applying the staionary contion in KKT:
 $$
+\begin{aligned}
 \frac{\partial \mathcal{L}}{\partial b} = -\sum_{i=1}^n \lambda_i y_i = 0 \rightarrow \text{New constraint, Eliminates primal variable } b \\[6pt]
 \nabla_{\mathbf{w}}\mathcal{L} = \mathbf{w}^* - \sum_{i=1}^n \lambda_i y_i \mathbf{x}_i = 0 \rightarrow \text{Eliminates primal variable } \mathbf{w}^* = \sum_{i=1}^n \lambda_i y_i \mathbf{x}_i
+\end{aligned}
 $$
 Then we make the problem moew easier! Here is:
 
 **Dual program for hard-margin SVM**
 $$
+\begin{aligned}
 \underset{\lambda}{\text{argmax}} \sum_{i=1}^n \lambda_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \lambda_i\lambda_j y_i y_j \mathbf{x}_i^{\prime}\mathbf{x}_j \\[6pt]
-
 \text{s.t.} \; \lambda_i \geq 0 \text{ and } \sum_{i=1}^n \lambda_i y_i = 0
+\end{aligned}
 $$
 
 **Making predictions with dual solution**
@@ -112,8 +117,10 @@ For lagrangian problem in **soft-margin SVM** the slack variable $\xi$:
 ### Soft-margin SVM’s dual
 The function for Sofr-Margin is similar. The difference is the constraint of $\lambda$
 $$
+\begin{aligned}
 \underset{\lambda}{\text{argmax}} \sum_{i=1}^n \lambda_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \lambda_i\lambda_j y_i y_j \mathbf{x}_i^{\prime}\mathbf{x}_j \\[6pt]
 \text{s.t. } C \geq \lambda_i \geq 0 \text{ and } \sum_{i=1}^n \lambda_i y_i = 0
+\end{aligned}
 $$
 
 ### Kernelising the SVM

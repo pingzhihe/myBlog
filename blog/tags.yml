@@ -17,3 +17,13 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+随笔:
+  label: 随笔
+  permalink: /essay
+  description: Essay tag description
+
+哲学:
+  label: 哲学
+  permalink: /philosophy
+  description: Philosophy tag description

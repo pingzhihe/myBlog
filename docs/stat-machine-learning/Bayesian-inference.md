@@ -17,8 +17,10 @@ This is the idea underlying Bayesian inference
 Apply Bayesian inference to linear regression, using Normal prior over **w**
 Bayes Rule:
 $$
+\begin{aligned}
 p(\mathbf{w}|\mathbf{X}, \mathbf{y}) = \frac{p(\mathbf{y}|\mathbf{X}, \mathbf{w}) p(\mathbf{w})}{p(\mathbf{y}|\mathbf{X})} \\[6pt]
 \max_{\mathbf{w}} p(\mathbf{w}|\mathbf{X}, \mathbf{y}) = \max_{\mathbf{w}} p(\mathbf{y}|\mathbf{X}, \mathbf{w}) p(\mathbf{w})
+\end{aligned}
 $$
 
 $p(\mathbf{y}|\mathbf{X}, \mathbf{w})$ Is the likelihoond function, $p(\mathbf{w})$ is the prior and $p(\mathbf{y}|\mathbf{X})$ is **marginal mikelihood**
@@ -41,11 +43,13 @@ when product of **likelihood x prior** results in the same distribution as the *
 Evidence can be computed easily using the normalising constant of the Normal distribution
 
 $$
+\begin{aligned}
 p(\mathbf{w}|\mathbf{X}, \mathbf{y}, \sigma^2) \propto \text{Normal}(\mathbf{w}|\mathbf{0}, \gamma^2 \mathbf{I}_D) \, \text{Normal}(\mathbf{y}|\mathbf{Xw}, \sigma^2 \mathbf{I}_N) \\
-\propto \text{Normal}(\mathbf{w}|\mathbf{w}_N, V_N) \\[6pt]
+\propto \text{Normal}(\mathbf{w}|\mathbf{w}_N, V_N)
+\end{aligned}
 $$
 Where: 
-$$ \mathbf{w}_N = \frac{1}{\sigma^2} \mathbf{V}_N \mathbf{X}^\prime \mathbf{y} \\    \mathbf{V}_N = \sigma^2 \left( \mathbf{X}^\prime \mathbf{X} + \frac{\sigma^2}{\gamma^2} \mathbf{I}_D \right)^{-1}$$
+$$ \begin{aligned} \mathbf{w}_N = \frac{1}{\sigma^2} \mathbf{V}_N \mathbf{X}^\prime \mathbf{y} \\    \mathbf{V}_N = \sigma^2 \left( \mathbf{X}^\prime \mathbf{X} + \frac{\sigma^2}{\gamma^2} \mathbf{I}_D \right)^{-1} \end{aligned} $$
 $\mathbf{w}_N$ : Mean Vector $\mathbf{V}_N$ : Covariance Matrix 
 
 

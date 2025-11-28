@@ -91,19 +91,23 @@ $$
 Where $|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle) \quad |- \rangle = \frac{1}{\sqrt{2}}(|0\rangle - |1\rangle)$.
 
 $$
+\begin{aligned}
 I|0\rangle = |0\rangle, \quad I|1\rangle = |1\rangle; \quad
-X|0\rangle = |1\rangle, \quad X|1\rangle = |0\rangle; \newline
+X|0\rangle = |1\rangle, \quad X|1\rangle = |0\rangle; \\
 Y|0\rangle = i|1\rangle, \quad Y|1\rangle = -i|0\rangle; \quad
 Z|0\rangle = |0\rangle, \quad Z|1\rangle = -|1\rangle
+\end{aligned}
 $$
 
 
 ## Pauli Gates and the Bloch Sphere
 The Pauli gates are **Hermitian and unitary**, which means that they are self-adjoint and their inverse is equal to their conjugate transpose. The Pauli gates are also **involutory**, which means that applying the gate **twice** will return the **original state**. The Pauli gates are also **traceless**, which means that the sum of the diagonal elements is zero.
 $$
+\begin{aligned}
 \textbf{X basis:} \quad \left\{|+\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \quad |-\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}} \right\} \\[1em]
 \textbf{Y basis:} \quad \left\{|i\rangle = \frac{|0\rangle + i|1\rangle}{\sqrt{2}}, \quad |-i\rangle = \frac{|0\rangle - i|1\rangle}{\sqrt{2}} \right\} \\[1em]
 \textbf{Z basis:} \quad \left\{|0\rangle, |1\rangle \right\}
+\end{aligned}
 $$
 - the X, Y and Z basis states are **orthogonal** and **normalized**;
 - the X, Y and Z basis states are **eigenstates** of the Pauli X, Y and Z gates
@@ -193,9 +197,11 @@ $$
 
 Polar Form:
 $$
+\begin{aligned}
 r = |z| = \sqrt{x^2 + y^2} \\[5pt]
 \theta =  arg(z) = tan^{-1} (\frac{y}{x}) \\[5pt]
 \bf{z = r(\cos{\theta} +  i \sin{\theta})} \quad \leftarrow \text{final form}
+\end{aligned}
 $$
 Exponential Form:\
 Euler's formula : $e^{i \theta} = \cos{\theta} + i \sin{\theta}$
@@ -206,17 +212,21 @@ z = r e^{i \theta}
 $$
 **Matric multipliation**
 $$
+\begin{aligned}
 A = \begin{bmatrix} a & b \\ c & d\end{bmatrix} \quad B = \begin{bmatrix} e & f \\ g & h\end{bmatrix} \\[6pt]
 A \times B = \begin{bmatrix} a×e+b×g & a×f+b×h \\ c×e+d×g & c×f+d×h \end{bmatrix}
+\end{aligned}
 $$
 
 **Some normal gate combination**
 $$
+\begin{aligned}
 X^2 = Y^2 = Z^2 = I \\
 H =  \frac{1}{\sqrt{2}}(X+Z)\\
 X = HZH \quad Z = HXH \quad -1Y = HYH \\
 S = T^2 \\  
 -1Y = XYX       
+\end{aligned}
 $$ 
 
 ## Embedding Data

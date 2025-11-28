@@ -47,7 +47,7 @@ $
 Probabilities are estimated using counts from a corpus:
 - Unigram： $P(w_i) = \frac{C{(w_i)}}{M}$ (where $M$ is the total number of words)
 - Bigram: $P(w_i| w_{i-1}) = \frac{C(w_{i-1}, w_i)}{C(w_i)}$ 
-- N-gram : $P(w_i| w_{i−n+1}​,\dots ,w_{i−1}​) =  \frac{C(w_{i−n+1}​,\dots ,w_{i−1})}{C(w_{i−n+1}​,\dots ,w_{i})} $
+- N-gram : $P(w_i| w_{i−n+1},\dots ,w_{i−1}) =  \frac{C(w_{i−n+1},\dots ,w_{i−1})}{C(w_{i−n+1},\dots ,w_{i})} $
 
 ## 5. Book-ending Sequences
 Special tags `<s>` and `</s>` denote the start and end of a sentence, respectively,aiding probability calculations (e.g., $P(yes∣<s>,<s>)$ ).
