@@ -33,9 +33,9 @@ $$
 The transition probability matrix:
 $$
 A=\begin{pmatrix}
-p(\text{JJ}\to\text{JJ}) & p(\text{JJ}\to\text{NNS}) & p(\text{JJ}\to\text{VBP})\\[5mm]
-p(\text{NNS}\to\text{JJ}) & p(\text{NNS}\to\text{NNS}) & p(\text{NNS}\to\text{VBP})\\[5mm]
-p(\text{VBP}\to\text{JJ}) & p(\text{VBP}\to\text{NNS}) & p(\text{VBP}\to\text{VBP})
+p(\text{JJ}|\text{JJ}) & p(\text{NNS}|\text{JJ}) & p(\text{VBP}|\text{JJ})\\[5mm]
+p(\text{JJ}|\text{NNS}) & p(\text{NNS}|\text{NNS}) & p(\text{VBP}|\text{NNS})\\[5mm]
+p(\text{JJ}|\text{VBP}) & p(\text{NNS}|\text{VBP}) & p(\text{VBP}|\text{VBP})
 \end{pmatrix}
 =
 \begin{pmatrix}
