@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
@@ -17,13 +17,13 @@ const config = {
   baseUrl: '/myBlog/',
   organizationName: 'pingzhihe',
   projectName: 'Charles',
-  trailingSlash: false, 
+  trailingSlash: false,
   future: {
     experimental_faster: true,
   },
 
 
-  
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
 
@@ -89,6 +89,11 @@ const config = {
   ],
 
   themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
@@ -104,13 +109,13 @@ const config = {
           position: 'left',
           label: 'Notes',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/pingzhihe/myBlog',
           label: 'GitHub',
           position: 'right',
         },
-        {to:'bookmarks', label: 'useful websites', position: 'left'},
+        { to: 'bookmarks', label: 'useful websites', position: 'left' },
       ],
     },
     footer: {
