@@ -15,15 +15,14 @@ npm start
 用于启动服务
 
 
-```
+```bash
 npm run build
 ```
 用于构建服务
 
 
+```bash
+npm run serve
 ```
-npm run deploy
-```
-用于部署服务
-
+用于预览构建的服务
 
