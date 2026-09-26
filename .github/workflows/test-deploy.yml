@@ -18,11 +18,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: npm
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
       - name: Type check
-        run: npm run typecheck
+        run: bun run typecheck
       - name: Test build website
-        run: npm run build
+        run: bun run build
