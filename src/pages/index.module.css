@@ -1,53 +1,252 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 64px;
+  align-items: start;
+  padding: 82px 0 86px;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
+.heroCopy > p:first-child {
+  margin-bottom: 27px;
+}
+
+.name {
+  font-size: clamp(100px, 13.7vw, 188px);
+  font-weight: 500;
+  letter-spacing: -.075em;
+  line-height: .93;
+  margin: 0 0 36px -.065em;
+}
+
+.intro {
+  font-size: clamp(23px, 2.35vw, 31px);
+  line-height: 1.28;
+  letter-spacing: -.025em;
+  margin: 0;
+}
+
+.section {
+  border-top: 1px solid var(--rule);
+  padding: 34px 0 56px;
+  display: grid;
+  grid-template-columns: 25% minmax(0, 1fr);
+}
+
+.sectionSide {
+  padding: 6px 22px 0 0;
+}
+
+.sectionSide h2 {
+  margin-bottom: 24px;
+}
+
+.textLink {
+  display: inline-block;
+  font: 13px/1.6 var(--sans);
+  color: var(--secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 5px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list li + li {
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.noteLink {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px;
+  gap: 16px;
+  align-items: center;
+  min-height: 82px;
+  padding: 16px 0;
+  font-size: 26px;
+  letter-spacing: -.035em;
+  line-height: 1.25;
+}
+
+.list li:first-child .noteLink {
+  padding-top: 0;
+  min-height: 67px;
+}
+
+.home a {
+  color: var(--ink);
+}
+
+.home a:hover {
+  text-decoration: none;
+}
+
+.noteLink:hover > span:first-child,
+.entry:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.arrow {
+  font-size: 21px;
+  line-height: 1;
+  color: var(--secondary);
+  transition: transform .2s, color .2s;
+}
+
+.noteLink:hover .arrow,
+.entry:hover .arrow {
+  transform: translate(3px, -3px);
+  color: var(--accent);
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px 20px;
+  gap: 16px;
+  padding: 25px 0;
+  align-items: baseline;
+}
+
+.list li:first-child .entry {
+  padding-top: 0;
+}
+
+.entry h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -.025em;
+}
+
+.entry time {
+  color: var(--secondary);
+  font: 12px/1.6 var(--mono);
+  white-space: nowrap;
+}
+
+.elsewhere {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: 17px;
+}
+
+.elsewhere a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 6px;
+}
+
+.elsewhere a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ink);
+}
+
+@media (min-width: 1600px) {
+  .hero {
+    padding-top: 104px;
+    padding-bottom: 108px;
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 1050px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 32px;
+  }
+
+  .name {
+    font-size: clamp(92px, 13.1vw, 150px);
+  }
+
+  .noteLink {
+    font-size: 23px;
+  }
+
+  .entry {
+    grid-template-columns: minmax(0, 1fr) 96px 16px;
+  }
+
+  .entry h3 {
+    font-size: 22px;
+  }
 }
 
-/* This background belongs only to the homepage content section. */
-.homeContent {
-  position: relative;
-  isolation: isolate;
-}
+@media (max-width: 760px) {
+  .hero {
+    padding: 52px 0 44px;
+    gap: 30px;
+    grid-template-columns: 1fr;
+  }
 
-.homeContent::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 350px;
-  max-height: 100%;
-  background:
-    radial-gradient(ellipse 60% 40% at 20% 30%, var(--ifm-color-primary-light), transparent 60%),
-    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(147, 196, 253, 0.566), transparent 65%),
-    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(99, 101, 241, 0.413), transparent 60%);
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 0 0 50% 50% / 25px;
-  opacity: 0.7;
-}
+  .name {
+    font-size: clamp(76px, 21vw, 152px);
+    margin-bottom: 28px;
+  }
 
-[data-theme='dark'] .homeContent::before {
-  background:
-    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(121, 121, 121, 0.411), transparent 70%),
-    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(46, 46, 46, 0.04), transparent 65%),
-    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(119, 121, 124, 0.03), transparent 60%);
-  opacity: 0.5;
+  .intro {
+    font-size: 24px;
+  }
+
+  .section {
+    grid-template-columns: 1fr;
+    padding: 24px 0 36px;
+  }
+
+  .sectionSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px 20px;
+    flex-wrap: wrap;
+    margin-bottom: 27px;
+    padding: 0;
+  }
+
+  .sectionSide h2 {
+    margin: 0;
+  }
+
+  .textLink {
+    font-size: 12px;
+  }
+
+  .noteLink {
+    font-size: 21px;
+    min-height: 77px;
+  }
+
+  .entry {
+    grid-template-columns: minmax(0, 1fr) 18px;
+    gap: 8px 14px;
+    padding: 21px 0;
+  }
+
+  .entry time {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 11px;
+  }
+
+  .entry h3 {
+    grid-row: 2;
+    font-size: 21px;
+  }
+
+  .entry .arrow {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .elsewhere {
+    font-size: 15px;
+    gap: 22px;
+  }
 }

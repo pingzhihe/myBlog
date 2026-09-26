@@ -1,0 +1,40 @@
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 24px 0 35px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font: 12px/1.6 var(--mono);
+  color: var(--secondary);
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer div {
+  display: flex;
+  gap: 24px;
+}
+
+.footer a {
+  font-family: var(--sans);
+  color: inherit;
+}
+
+@media (max-width: 760px) {
+  .footer {
+    font-size: 11px;
+  }
+
+  .footer div {
+    gap: 16px;
+  }
+}
+
+@media print {
+  .footer {
+    display: none;
+  }
+}

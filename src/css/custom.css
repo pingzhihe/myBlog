@@ -1,140 +1,480 @@
-/**
- * Modern Tech Theme
- * A sleek and contemporary design with smooth transitions
- */
+/* Shared palette and type follow charles-home.html. */
 
-/* Light Mode - Default Theme */
 :root {
-  /* Primary Colors: Deep Blue Gradient */
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #bfdbfe;
-
-  /* Custom Background and Text Colors */
-  --ifm-background-color: #ffffff;
-  --ifm-background-surface-color: #f8fafc;
-  --ifm-font-color-base: #1e293b;
-
-  /* Code Block Styling */
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
-  /* Custom Shadows */
-  --ifm-navbar-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --ifm-card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-
-  /* 添加设计感增强变量 */
-  --card-border-radius: 12px;
-  --subtle-accent: rgba(59, 130, 246, 0.1);
+  --site-width: min(1200px, calc(100% - 128px));
+  --paper: #fafaf9;
+  --ink: #191919;
+  --secondary: #666664;
+  --rule: #d8d8d5;
+  --hover: #f0f0ed;
+  --accent: #117185;
+  --ifm-color-primary: #117185;
+  --ifm-color-primary-dark: #0f6678;
+  --ifm-color-primary-darker: #0e6071;
+  --ifm-color-primary-darkest: #0c4f5d;
+  --ifm-color-primary-light: #137c92;
+  --ifm-color-primary-lighter: #148299;
+  --ifm-color-primary-lightest: #1693ad;
+  --ifm-background-color: var(--paper);
+  --ifm-background-surface-color: var(--paper);
+  --ifm-font-color-base: var(--ink);
+  --ifm-font-color-secondary: var(--secondary);
+  --ifm-heading-color: var(--ink);
+  --ifm-font-family-base: var(--sans);
+  --ifm-font-family-monospace: var(--mono);
+  --ifm-heading-font-family: var(--heading);
+  --ifm-heading-font-weight: 500;
+  --ifm-font-weight-normal: 400;
+  --ifm-line-height-base: 1.8;
+  --ifm-color-emphasis-100: var(--hover);
+  --ifm-color-emphasis-200: var(--rule);
+  --ifm-color-emphasis-300: var(--rule);
+  --ifm-color-emphasis-600: var(--secondary);
+  --ifm-color-emphasis-700: var(--secondary);
+  --ifm-navbar-height: 112px;
+  --ifm-navbar-background-color: var(--paper);
+  --ifm-navbar-link-color: var(--ink);
+  --ifm-navbar-shadow: none;
+  --ifm-global-shadow-lw: none;
+  --ifm-global-shadow-md: none;
+  --ifm-global-radius: 0;
+  --ifm-card-border-radius: 0;
+  --ifm-code-border-radius: 0;
+  --ifm-code-font-size: 88%;
+  --ifm-code-background: var(--hover);
+  --ifm-menu-color: var(--secondary);
+  --ifm-menu-color-background-active: var(--hover);
+  --ifm-menu-color-background-hover: var(--hover);
+  --ifm-toc-border-color: var(--rule);
+  --ifm-table-border-color: var(--rule);
+  --ifm-table-stripe-background: var(--hover);
+  --ifm-breadcrumb-border-radius: 0;
+  --doc-sidebar-width: 280px;
+  --docusaurus-highlighted-code-line-bg: #11718512;
 }
 
-/* Dark Mode Overrides */
-[data-theme='dark'] {
-  /* Primary Colors: 更协调的蓝紫色系 */
-  --ifm-color-primary: #60a5fa;
-  --ifm-color-primary-dark: #3b82f6;
-  --ifm-color-primary-darker: #2563eb;
-  --ifm-color-primary-darkest: #1d4ed8;
-  --ifm-color-primary-light: #93c5fd;
-  --ifm-color-primary-lighter: #bfdbfe;
-  --ifm-color-primary-lightest: #dbeafe;
-
-  /* Dark Mode Background and Text - 更科学的对比度 */
-  --ifm-background-color: #0c1117;
-  --ifm-background-surface-color: #161b22;
-  --ifm-font-color-base: #e6edf3;
-
-  /* 次要文字颜色 */
-  --ifm-font-color-secondary: #8b949e;
-  --ifm-font-color-muted: #7d8590;
-
-  /* Dark Mode Code Block */
-  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.08);
-
-  /* 暗色模式设计感增强变量 */
-  --subtle-accent: rgba(96, 165, 250, 0.08);
-
-  /* 边框颜色 */
-  --ifm-color-emphasis-300: #30363d;
-  --ifm-color-emphasis-200: #21262d;
-  --ifm-color-emphasis-100: #1c2128;
-
-  /* 成功、警告、错误色彩 */
-  --ifm-color-success: #2ea043;
-  --ifm-color-warning: #fb8500;
-  --ifm-color-danger: #f85149;
+:root[data-theme='dark'] {
+  --paper: #151616;
+  --ink: #ededeb;
+  --secondary: #a4a6a3;
+  --rule: #383b3a;
+  --hover: #202322;
+  --accent: #a0dfec;
+  --ifm-color-primary: #a0dfec;
+  --ifm-color-primary-dark: #7bd3e4;
+  --ifm-color-primary-darker: #68cce1;
+  --ifm-color-primary-darkest: #31bad6;
+  --ifm-color-primary-light: #c5ebf4;
+  --ifm-color-primary-lighter: #d8f2f7;
+  --ifm-color-primary-lightest: #eaf8fb;
+  --ifm-background-color: var(--paper);
+  --ifm-background-surface-color: var(--paper);
+  --ifm-font-color-base: var(--ink);
+  --ifm-color-emphasis-100: var(--hover);
+  --ifm-color-emphasis-200: var(--rule);
+  --ifm-color-emphasis-300: var(--rule);
+  --ifm-color-emphasis-600: var(--secondary);
+  --ifm-color-emphasis-700: var(--secondary);
+  --docusaurus-highlighted-code-line-bg: #a0dfec12;
 }
 
-/* Custom Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 136px;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--ifm-background-surface-color);
+body {
+  -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--ifm-color-primary-lighter);
-  border-radius: 4px;
+::selection {
+  background: #a6dfe9;
+  color: #13282c;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ifm-color-primary-darkest);
+a {
+  text-underline-offset: 4px;
 }
 
-/* Navbar Basic Styling */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+/* Masthead stays consistent across home, notes, and journal. */
+
 .navbar {
-  background-color: var(--ifm-background-color);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0;
+  border: 0;
+  box-shadow: none;
 }
 
-[data-theme='dark'] .navbar {
-  background-color: rgba(12, 17, 23, 0.95);
-  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+.navbar__inner {
+  width: var(--site-width);
+  margin-inline: auto;
+  border-bottom: 1px solid var(--rule);
 }
 
-/* Desktop Glassmorphism Effect */
-@media (min-width: 997px) {
-  .navbar {
-    backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-  }
-
-  [data-theme='dark'] .navbar {
-    background-color: rgba(15, 23, 42, 0.75);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  }
+.navbar__brand {
+  margin-right: 24px;
 }
 
-/* Shared content typography; decorative effects belong in CSS modules. */
-.prism-code {
-  border-radius: var(--card-border-radius);
+.navbar__title {
+  font: 400 13px/1.5 var(--sans);
+  letter-spacing: .075em;
+}
+
+.navbar__title::after {
+  content: '/ PERSONAL SITE';
+  margin-left: 12px;
+  color: var(--secondary);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.navbar__link {
+  padding: 8px 14px;
+  font: 14px/1.5 var(--sans);
+  font-weight: 400;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+/* Reading pages: quiet navigation, generous leading, readable code and math. */
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--rule) !important;
+}
+
+.theme-doc-sidebar-menu {
+  font-size: 14px;
+  padding: 20px 12px;
+}
+
+.menu__link {
+  border-radius: 0;
+  line-height: 1.5;
+  padding: 9px 12px;
+  font-weight: 400;
+}
+
+.menu__link--active {
+  color: var(--accent);
+  box-shadow: inset 2px 0 var(--accent);
+}
+
+.menu__caret {
+  border-radius: 0;
+}
+
+.theme-doc-breadcrumbs {
+  margin-bottom: 32px !important;
+}
+
+.breadcrumbs__link {
+  font: 12px/1.6 var(--sans);
+  color: var(--secondary);
+}
+
+.theme-doc-markdown,
+.blog-post-page .markdown {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+.markdown :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--heading);
+  font-weight: 500;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--mono);
+}
+
+a[rel='tag'] {
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.markdown h1,
+.blog-post-page article header h1 {
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.18;
+  letter-spacing: -.045em;
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+.markdown h2 {
+  font-size: 28px;
+  line-height: 1.4;
+  letter-spacing: -.025em;
+  margin-top: 52px;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule);
+}
+
+.markdown h3 {
+  font-size: 21px;
+  line-height: 1.5;
+  margin-top: 32px;
+}
+
+.markdown a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+}
+
+.markdown a:hover {
+  text-decoration-color: currentColor;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol {
+  margin-bottom: 24px;
+}
+
+.markdown blockquote {
+  border-left: 2px solid var(--accent);
+  color: var(--secondary);
+  padding: 4px 0 4px 24px;
+  margin: 32px 0;
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown pre {
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.markdown pre,
+.theme-code-block {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.theme-code-block {
+  border: 1px solid var(--rule);
 }
 
 .markdown table {
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
 .markdown thead {
-  background: var(--subtle-accent);
+  background: var(--hover);
 }
 
-[data-theme='dark'] ::-webkit-scrollbar-track {
-  background: var(--ifm-color-emphasis-200);
+.markdown th,
+.markdown td {
+  padding: 12px 16px;
 }
 
-[data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: var(--ifm-color-emphasis-300);
+.markdown .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 8px;
+  max-width: 100%;
 }
 
-[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
-  background: var(--ifm-color-primary);
+.table-of-contents {
+  font-size: 12px;
+  line-height: 1.7;
+  border-left: 1px solid var(--rule);
+}
+
+.table-of-contents__link {
+  color: var(--secondary);
+}
+
+.pagination-nav {
+  gap: 24px;
+}
+
+.pagination-nav__link {
+  border-radius: 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  padding: 22px 0;
+}
+
+.pagination-nav__sublabel {
+  font: 11px/1.6 var(--mono);
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+
+.pagination-nav__label {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.theme-doc-footer {
+  margin-top: 48px;
+  font-size: 12px;
+}
+
+.theme-doc-footer-edit-meta-row {
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+}
+
+.blog-post-page article header {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+
+.blog-post-page article header h1 {
+  margin-bottom: 22px;
+}
+
+.blog-post-page article header time {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.blog-post-page .avatar__photo {
+  border-radius: 0;
+}
+
+.blog-post-page .avatar__name {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.blog-post-page .avatar__subtitle {
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+.card {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card:hover {
+  box-shadow: none;
+}
+
+.alert {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (min-width: 997px) {
+  .theme-doc-markdown {
+    padding-top: 8px;
+  }
+
+  .docs-wrapper main > .container {
+    padding: 36px 40px 64px !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  :root {
+    --site-width: calc(100% - 80px);
+  }
+
+  .navbar__title::after {
+    display: none;
+  }
+}
+
+@media (max-width: 996px) {
+  :root {
+    --ifm-navbar-height: 80px;
+  }
+
+  .navbar-sidebar {
+    background: var(--paper);
+  }
+
+  .navbar-sidebar__brand {
+    border-bottom: 1px solid var(--rule);
+    box-shadow: none;
+  }
+
+  .navbar__toggle {
+    margin-right: 16px;
+  }
+
+  .theme-doc-sidebar-menu {
+    padding: 0;
+  }
+
+  .theme-doc-toc-mobile {
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    margin-top: 16px;
+  }
+
+  .docs-wrapper main > .container {
+    padding-top: 28px !important;
+  }
+
+  html {
+    scroll-padding-top: 100px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --site-width: calc(100% - 40px);
+  }
+
+  .markdown h2 {
+    font-size: 25px;
+    margin-top: 36px;
+  }
+
+  .markdown pre {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .navbar,
+  .pagination-nav,
+  .theme-doc-sidebar-container {
+    display: none;
+  }
 }

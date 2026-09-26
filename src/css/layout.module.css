@@ -1,0 +1,28 @@
+.page {
+  width: var(--site-width);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font: 400 12px/1.6 var(--mono);
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.indexPage {
+  padding: 68px 0 96px;
+  min-height: 70vh;
+}
+
+@media (max-width: 760px) {
+  .indexPage {
+    padding: 44px 0 64px;
+  }
+}
+
+@media print {
+  .page {
+    width: 100%;
+  }
+}

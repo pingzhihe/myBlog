@@ -43,6 +43,19 @@ $ bun run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Source layout
+
+- `src/pages/`: homepage and bookmarks routes, with styles in adjacent CSS Modules.
+- `src/components/`: shared index heading and the homepage video player, each with its own styles.
+- `src/theme/`: Docusaurus overrides for the journal index, footer, and color mode toggle. Check these overrides when upgrading Docusaurus.
+- `src/css/custom.css`: shared design tokens, base styles, and overrides for Docusaurus navigation and reading pages.
+- `src/css/layout.module.css`: shared page width, index spacing, and section labels.
+- `static/fonts/fonts.css`: shared font faces and typography roles for both the site and prototype. See [font sources and licenses](static/fonts/README.md); `/fonts` exposes license links and IPA font restoration instructions to readers.
+- `docs/` and `blog/`: authored content; `static/img/`: images and video used by the site.
+- `charles-home.html`: standalone design reference. The deployed homepage is `src/pages/index.tsx`.
+
+Keep component-specific styles beside their components. Use the global stylesheet for site-wide tokens and Docusaurus elements that are not locally overridden.
+
 ### Deployment
 
 Pull requests to `main` run `bun install --frozen-lockfile`, type checking, and a production build.

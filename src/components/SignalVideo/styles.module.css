@@ -1,0 +1,47 @@
+.signal {
+  margin: 12px 0 0;
+  min-width: 0;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #040607;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--secondary);
+  font: 11px/1.6 var(--mono);
+}
+
+.caption button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.mediaError {
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 760px) {
+  .signal {
+    width: 180px;
+    justify-self: end;
+    margin: 0;
+  }
+}

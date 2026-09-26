@@ -1,7 +1,84 @@
-.cardsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: -8px;
+.directory {
+  margin-top: 34px;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 25% minmax(0, 1fr);
+  padding-bottom: 36px;
+}
+
+.group + .group {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+}
+
+.group h2 {
+  border: 0;
+  padding: 6px 24px 0 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.group h2 > span {
+  font: 12px/1.6 var(--mono);
+  color: var(--secondary);
+  margin-right: 20px;
+}
+
+.group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.group li + li {
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+.group a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 0;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.group li:first-child a {
+  padding-top: 0;
+}
+
+.group a span {
+  font: 12px/1.6 var(--mono);
+  color: var(--secondary);
+}
+
+.group a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+@media (max-width: 760px) {
+  .group {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-  
+
+  .group a {
+    font-size: 19px;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .group a span {
+    font-size: 11px;
+  }
+}
