@@ -16,10 +16,13 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/myBlog/',
   organizationName: 'pingzhihe',
-  projectName: 'Charles',
+  projectName: 'myBlog',
   trailingSlash: false,
   future: {
-    experimental_faster: true,
+    faster: true,
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
   },
 
 
@@ -28,11 +31,15 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // The Faster plugin 
   // future: {
-  //   experimental_faster: true,
+  //   faster: true,
   // },
 
   // Even if you don't use internationalization, you can use this field to set

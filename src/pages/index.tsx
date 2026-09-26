@@ -6,13 +6,14 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
+import decorations from '@site/src/css/decorations.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero ', styles.heroBanner)}>
       <div className="container">
-        <img src={require('@site/static/img/sinji-gif.gif').default} alt="favicon" width="150" />
+        <img className={decorations.image} src={require('@site/static/img/sinji-gif.gif').default} alt="favicon" width="150" />
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
@@ -36,7 +37,7 @@ export default function Home(): JSX.Element {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
-      <main>
+      <main className={styles.homeContent}>
         <HomepageFeatures />
       </main>
     </Layout>

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import decorations from '@site/src/css/decorations.module.css';
 import React from 'react';
 
 type FeatureItem = {
@@ -43,20 +44,10 @@ const FeatureList: FeatureItem[] = [
 function Feature({title, image, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center" style={{ 
-        height: '250px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        marginBottom: '15px'
-      }}>
-        <img src={image} alt="feature" width="120" />
+      <div className={clsx('text--center', styles.imageContainer)}>
+        <img className={decorations.image} src={image} alt="feature" width="120" />
       </div>
-      <div className="text--center padding-horiz--md" style={{ 
-        minHeight: '80px',
-        position: 'relative',
-        padding: '0 10px'
-      }}>
+      <div className={clsx('text--center padding-horiz--md', styles.description)}>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </div>

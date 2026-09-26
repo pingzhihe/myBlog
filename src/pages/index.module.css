@@ -21,3 +21,33 @@
   align-items: center;
   justify-content: center;
 }
+
+/* This background belongs only to the homepage content section. */
+.homeContent {
+  position: relative;
+  isolation: isolate;
+}
+
+.homeContent::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 350px;
+  max-height: 100%;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, var(--ifm-color-primary-light), transparent 60%),
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(147, 196, 253, 0.566), transparent 65%),
+    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(99, 101, 241, 0.413), transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 0 0 50% 50% / 25px;
+  opacity: 0.7;
+}
+
+[data-theme='dark'] .homeContent::before {
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(121, 121, 121, 0.411), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 20%, rgba(46, 46, 46, 0.04), transparent 65%),
+    radial-gradient(ellipse 40% 25% at 60% 50%, rgba(119, 121, 124, 0.03), transparent 60%);
+  opacity: 0.5;
+}

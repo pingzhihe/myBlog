@@ -17,10 +17,12 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: yarn
+          node-version-file: '.nvmrc'
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
+      - name: Type check
+        run: npm run typecheck
       - name: Test build website
-        run: yarn build
+        run: npm run build
